@@ -1,11 +1,11 @@
-name: "Jekyll Untrue Minimal"
-description: "Welcome to the demo site for 'Jekyll Untrue Minimal'. The description of the blog/site as found in the config YAML doubles as the header rather than a large title or banner. It is here to provide a description of the blog/site as the first text drawn on screen and allows more space for, and less distraction from, pages and posts. Please visit the two sections and read the posts to learn about this theme."
+name: "blueBlog"
+description: "This is a personal blog, please observe Think Hour for ad hoc writings and Thought World for my ratified items. I will see you there."
 
 timezone: Europe/London
 future: true
 
 url: ''
-baseurl: '/jekyll-untrue-minimal'
+baseurl: ''
 
 markdown: kramdown
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
