@@ -7,7 +7,7 @@ layout: default
 
 <div class=overpost>
 
-    <h2>#{{page.tag}}</h2>
+    <h2 class=tag>#{{page.tag}}</h2>
     <br>
     <br>
 
@@ -15,9 +15,9 @@ layout: default
 
 <div class=overpost>
 
-<h3>Short Posts:</h3>
+<h3 class=tag>Think Hour:</h3>
 
-<ul>
+<ul class=func>
 <div class="split left">
     {% for post in site.categories.short %}
     {% if post.tags contains page.tag %}
@@ -46,7 +46,7 @@ layout: default
 
 </div>
 {% if shortnonempty != 1 %}
-<div class="nopost">No short posts found.</div>
+<div class="nopost">No posts found.</div>
 {% endif %}
 
 <br>
@@ -54,9 +54,9 @@ layout: default
 
 <div class=overpost>
 
-  <h3>Long Posts:</h3>
+  <h3 class=tag>Big Ideas:</h3>
 
-<ul>
+<ul class=func>
 
 <div class="split left" style="font-weight: bold;">
       {% for post in site.categories.long %}
@@ -83,6 +83,6 @@ layout: default
 </ul>
 
   {% if longnonempty != 1 %}
-  <div class="nopost">No long posts found.</div>
+  <div class="nopost">No posts found.</div>
   {% endif %}
 </div>

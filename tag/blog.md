@@ -1,6 +1,6 @@
 ---
 layout: tagpage
-title: "Tag: review"
-tag: review
+title: "Tag: blog"
+tag: blog
 robots: noindex
 ---

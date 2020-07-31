@@ -1,6 +1,6 @@
 ---
 layout: tagpage
-title: "Tag: web"
-tag: web
+title: "Tag: personal"
+tag: personal
 robots: noindex
 ---

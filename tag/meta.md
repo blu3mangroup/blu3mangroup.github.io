@@ -1,6 +1,6 @@
 ---
 layout: tagpage
-title: "Tag: writings"
-tag: writings
+title: "Tag: meta"
+tag: meta
 robots: noindex
 ---

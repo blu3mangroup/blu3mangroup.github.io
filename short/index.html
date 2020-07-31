@@ -3,14 +3,17 @@ layout: default
 title: short
 ---
 
+{% assign shortpostsexist = 0 %}
+
 <div class="over">
-  <ul>
+  <ul class=func>
   <div class="split left">
       {% for post in site.categories.short %}
         <li>
           {% assign date_print = post.date | date: "%F" %}
          {{ date_print | strip_newlines}} -
         </li>
+        {% assign shortpostsexist = 1 %}
       {% endfor %}
   </div>
 
@@ -25,3 +28,7 @@ title: short
     </div>
     </ul>
 </div>
+
+{% if shortpostsexist != 1 %}
+<div class="nopost">No posts found.</div>
+{% endif %}

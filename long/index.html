@@ -2,14 +2,16 @@
 layout: default
 title: long
 ---
+{% assign longpostsexist = 0 %}
 
 <div class="over">
-  <ul>
+  <ul class=func>
   <div class="split left" style="font-weight: bold;">
     {% for post in site.categories.long %}
         <li>
-          {{ post.type }} - 
+          {{ post.type }} -
         </li>
+        {% assign longpostsexist = 1 %}
       {% endfor %}
   </div>
 
@@ -24,3 +26,7 @@ title: long
     </div>
     </ul>
 </div>
+
+{% if longpostsexist != 1 %}
+<div class="nopost">No posts found.</div>
+{% endif %}
