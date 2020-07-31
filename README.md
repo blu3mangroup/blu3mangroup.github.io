@@ -1,4 +1,2 @@
-# jekyll-untrue-minimal
-This is a minimal theme that started from the barebones jekyll-true-minimal by cyevgeniy. It is based around the concept of having two streams of posts for your website. The short posts section functions like a journal, and is intended for daily posts that are scattered in subject and less fleshed out. These are contained in a folder "short" within the default posts directory. The long posts is for more fleshed out writings, that are more considered in nature and fit neatly under a category of your choosing.
-
-Along with this there is a tag browsing system that works properly on github pages without any extra plugins. The tags must be one word/string and separated by spaces in the frontmatter of each post. Before updating your site, run the tag generator Python script to refresh the tag page. This part of the website is based on a post about tagging from Long Qian (longqian.me). Please see the demo posts for extra information and use cases of this theme.
+# my blog
+personnel blog
