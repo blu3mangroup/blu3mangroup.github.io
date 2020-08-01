@@ -46,12 +46,19 @@ h2 {
 
 h3 {
   text-align: right;
+  margin-top: 50px;
   border-bottom: 1px solid teal;
 }
 
 img {
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+blockquote {
+ border-left: 5px solid teal;
+ background-color: #f4f4f4;
+ padding: 10px 20px;
 }
 
 a img {
