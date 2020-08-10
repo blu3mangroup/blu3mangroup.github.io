@@ -7,6 +7,7 @@ group :jekyll_plugins do
 end
 
 gem "tzinfo", "~> 2.0"
+gem "kramdown", ">= 2.3.0"
 
 gem "tzinfo-data", "~> 1.2020"
 
