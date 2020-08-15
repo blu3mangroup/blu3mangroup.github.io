@@ -82,6 +82,7 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jekyll-untrue-minimal!
+  kramdown (>= 2.3.0)
   tzinfo (~> 2.0)
   tzinfo-data (~> 1.2020)
   wdm (>= 0.1.0)
