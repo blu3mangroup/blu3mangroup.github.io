@@ -111,32 +111,18 @@ p {
 }
 
 ul.func {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    margin-left: 280px;
+    padding: 0;
+    display: flex;
 }
 
 ul.tagpage {
   list-style-type: none;
   margin: 0;
   padding: 1px;
-  margin-left: -30px;
-}
-
-.split {
-  width: 50%;
-  position: fixed;
-  margin: -5px;
-}
-
-.left {
-  left: 0;
-  text-align: right;
-}
-
-.right {
-  right: 0;
-  text-align: left;
+  margin-left: 220px;
 }
 
 //general alignment styles

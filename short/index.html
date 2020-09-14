@@ -21,7 +21,7 @@ title: short
         {% for post in site.categories.short %}
         <li>
           <a href="{{site.baseurl}}{{ post.url }}">
-            {{ post.content | strip_html | truncate: 40 }}
+            &nbsp{{ post.content | strip_html | truncate: 40 }}
           </a>
         </li>
         {% endfor %}
