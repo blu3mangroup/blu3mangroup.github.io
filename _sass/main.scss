@@ -113,16 +113,9 @@ p {
 ul.func {
     list-style-type: none;
     margin: 0;
-    margin-left: 280px;
+    margin-left: 240px;
     padding: 0;
     display: flex;
-}
-
-ul.tagpage {
-  list-style-type: none;
-  margin: 0;
-  padding: 1px;
-  margin-left: 220px;
 }
 
 //general alignment styles
@@ -172,4 +165,26 @@ div.overpost{
 
 .center {
   text-align: center;
+}
+
+// Tag search page components
+
+div.tagcloud{
+  margin: auto;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+}
+
+div.tagcol{
+  margin: auto;
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+}
+
+ul.tagpage {
+  list-style-type: none;
+  margin: 0;
+  padding: 1px;
 }

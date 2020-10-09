@@ -1,0 +1,44 @@
+---
+layout: default
+---
+<!-- {% capture tags %}
+  {% for tag in site.tags %}
+  {{ tag[0] }}#{{ tag[1].size}}
+  {% endfor %}
+{% endcapture %} -->
+
+{% capture tags %}
+  {% for tag in site.tags %}
+  {{ tag[0] }}
+  {% endfor %}
+{% endcapture %}
+
+{% assign sortedtags = tags | split:' ' | sort %}
+
+<div class="tagcloud">
+{{ tags }}
+{{ site.tags }}
+<ul class="tagpage">
+  {% for tag in sortedtags %}
+     {% assign tagitems = tag | split: '#' %}
+     
+     <li><a href="{{ site.baseurl }}/tag/{{ tagitems[0] }}">#{{ tagitems[0] }}</a></li>
+     {% assign taglast = tagitems[0] %}
+  {% endfor %}
+  
+</ul>
+
+</div>
+
+
+ <!--  
+- intake all tags to collection
+- split collection by first letter
+- write using a loop to print first letter beginning with a header (nested)
+
+3 columns will display tags across 360px. div render rightwrds box
+- calculate total number of tags (dotlength) + letters of alphabets, this will be enough to divide by 3 and get similar length columns
+shift onto new column after the third of total lines is covered using counter. PAGINATE, css tag index heading etc
+
+ -->
+

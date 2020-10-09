@@ -6,8 +6,8 @@ title: short
 {% assign shortpostsexist = 0 %}
 
 <div class="over">
-  <ul class=func>
-  <div class="split left">
+<ul class=func>
+<div>
       {% for post in site.categories.short %}
         <li>
           {% assign date_print = post.date | date: "%F" %}
@@ -15,9 +15,9 @@ title: short
         </li>
         {% assign shortpostsexist = 1 %}
       {% endfor %}
-  </div>
+</div>
 
-  <div class="split right">
+<div>
         {% for post in site.categories.short %}
         <li>
           <a href="{{site.baseurl}}{{ post.url }}">
