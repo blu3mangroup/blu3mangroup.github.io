@@ -2,29 +2,24 @@
 layout: default
 title: long
 ---
+
 {% assign longpostsexist = 0 %}
 
 <div class="over">
-  <ul class=func>
-  <div class="split left" style="font-weight: bold;">
-    {% for post in site.categories.long %}
-        <li>
-          {{ post.type }} -
-        </li>
-        {% assign longpostsexist = 1 %}
-      {% endfor %}
-  </div>
+<ul class="index">
 
-  <div class="split right">
-    {% for post in site.categories.long %}
-        <li>
-          <a href="{{site.baseurl}}{{ post.url }}">
-             &nbsp{{ post.title }}
-          </a>
-        </li>
-        {% endfor %}
-    </div>
-    </ul>
+{% for post in site.categories.long %}
+
+      <li>
+      <div>{{ post.type }}&nbsp;</div>
+      <div><a href="{{site.baseurl}}{{ post.url }}">&nbsp{{ post.title }}&nbsp;</a></div>
+      </li>
+
+      {% assign longpostsexist = 1 %}
+
+{% endfor %}
+  
+</ul>
 </div>
 
 {% if longpostsexist != 1 %}

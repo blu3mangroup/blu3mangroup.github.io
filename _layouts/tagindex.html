@@ -1,44 +1,70 @@
 ---
 layout: default
 ---
-<!-- {% capture tags %}
-  {% for tag in site.tags %}
-  {{ tag[0] }}#{{ tag[1].size}}
-  {% endfor %}
-{% endcapture %} -->
+
+<!-- 
+I spent probably 5 hours last night looking through the code and browsing the net including looking at liquid, jekyll and github pages documentation to figure out the nature and issues of "site.tags" collection and why the collecttags.html from the LongQian method is necessary (when _building_ through GitHub Pages) and ultimately found nothing pertinent. Committing and uploading a version that prints out site.tags seems to indicate that site.tags is populated and works fine... not to mention I'm unsure how collecttags liquid was populating site.tags anyway.
+
+The code can be started from this point, and if at any point something goes wrong because site.tags doesnt exist or is populated with unexpected content then you can look to the afformentioned removal as the cause, but for now we can finally move on.
+-->
+
+
+<!-- tags with #size and an array of initial letters are prepared -->
 
 {% capture tags %}
   {% for tag in site.tags %}
-  {{ tag[0] }}
+  {{ tag[0] }}#{{ tag[1].size}}
   {% endfor %}
 {% endcapture %}
 
-{% assign sortedtags = tags | split:' ' | sort %}
-
-<div class="tagcloud">
-{{ tags }}
-{{ site.tags }}
-<ul class="tagpage">
-  {% for tag in sortedtags %}
-     {% assign tagitems = tag | split: '#' %}
-     
-     <li><a href="{{ site.baseurl }}/tag/{{ tagitems[0] }}">#{{ tagitems[0] }}</a></li>
-     {% assign taglast = tagitems[0] %}
+{% capture tagslice | uniq %}
+  {% for tag in site.tags %}
+  {{ tag[0] | slice: 0 }}
   {% endfor %}
-  
+{% endcapture %}
+
+<!-- using these captures we prepare arrays cleaned for listmaking purpoes and we get the number of lists we will draw -->
+{% assign paredtags = tags | downcase | split:' ' | sort %}
+{% assign inits = tagslice | downcase | split:' ' | uniq | sort %}
+{% assign listsamount = inits | size %}
+{% assign col2 = listsamount | divided_by: 3 | round %}
+{% assign col3 = listsamount | divided_by: 3 | round | times: 2 | plus: 1 %}
+
+<!-- this div draws a "bounding" box of sorts that is aligned to center and of a specific width, the tag display will go inside -->
+<div class="tagover">
+
+<!-- in the overarching loop we go through each of the unique initial tag characters -->
+{% for character in inits %}
+<!-- the increment i will count how many tag lists are drawn, and as such will initiate and end divs that serve as columns for each third of the amount -->
+
+{% if forloop.index == 1 %}
+<div>
+{% elsif forloop.index == col2 %}
+</div>
+<div>
+{% elsif forloop.index == col3 %}
+</div>
+<div>
+{% endif %}
+
+<!-- we draw a header and a list of tags after they pass a check against the current iteration character -->
+<h3>{{ character }}</h3>
+
+<ul class="tagpage">
+    {% for tag in paredtags %}
+        {% assign tagchar = tag | slice: 0 %}
+        {% if tagchar == character %}
+            {% assign tagwrite = tag | split: '#' %}
+            <li><a href="{{ site.baseurl }}/tag/{{ tagwrite[0] }}">{{ tagwrite[0] }}</a><small> ({{ tagwrite[1] }})</small></li>
+        {% endif %}
+    {% endfor %}
 </ul>
+<!-- once the last characters tags are drawn we cap off the last column div since the loop wont be returning -->
+{% if forloop.index == listsamount %}
+</div>
+{% endif %}
+
+{% endfor %}
 
 </div>
-
-
- <!--  
-- intake all tags to collection
-- split collection by first letter
-- write using a loop to print first letter beginning with a header (nested)
-
-3 columns will display tags across 360px. div render rightwrds box
-- calculate total number of tags (dotlength) + letters of alphabets, this will be enough to divide by 3 and get similar length columns
-shift onto new column after the third of total lines is covered using counter. PAGINATE, css tag index heading etc
-
- -->
 

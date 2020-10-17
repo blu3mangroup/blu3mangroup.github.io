@@ -2,87 +2,59 @@
 layout: default
 ---
 
-{% assign shortnonempty = 0 %}
-{% assign longnonempty = 0 %}
+{% assign shortpoststagged = 0 %}
+{% assign longpoststagged = 0 %}
 
-<div class=overpost>
+<div class=over>
 
-    <h2 class=tag>#{{ page.tag }}</h2>
-    <br>
-    <br>
+<h1>#{{ page.tag }}</h1>
 
-</div>
+<h3>think hour</h3>
 
-<div class=overpost>
+<ul class="index">
 
-<h3 class=tag>Think Hour:</h3>
+  {% for post in site.categories.short %}
+  {% if post.tags contains page.tag %}
 
-<ul class=func>
-<div class="split left">
-    {% for post in site.categories.short %}
-    {% if post.tags contains page.tag %}
-      <li>
-        {% assign date_print = post.date | date: "%F"  %}
-        {{ date_print | strip_newlines}} -
-      </li>
-      {% assign shortnonempty = 1 %}
-    {% endif %}
-    {% endfor %}
-</div>
-<div class="split right">
-      {% for post in site.categories.short %}
-      {% if post.tags contains page.tag %}
-      <li>
-        <a href="{{site.baseurl}}{{ post.url }}">
-          {{ post.content | strip_html | truncate: 40 }}
-        </a>
-      </li>
-      {% endif %}
-      {% endfor %}
-</div>
+  {% assign date_print = post.date | date: "%F" | replace: "-", "/" %}
+
+  <li>
+  <div>{{ date_print | strip_newlines }}&nbsp;</div>
+  <div><a href="{{site.baseurl}}{{ post.url }}">{{ post.content | strip_html | truncate: 40 | strip }}&nbsp;</a></div>
+  </li>
+
+  {% assign shortpoststagged = 1 %}
+
+  {% endif %}
+  {% endfor %}
 
 </ul>
 
-
-</div>
-{% if shortnonempty != 1 %}
+{% if shortpoststagged != 1 %}
 <div class="nopost">No posts found.</div>
 {% endif %}
 
-<br>
-<br>
+<h3>big ideas</h3>
 
-<div class=overpost>
+<ul class="index">
 
-  <h3 class=tag>Big Ideas:</h3>
+    {% for post in site.categories.long %}
+    {% if post.tags contains page.tag %}
+ 
+    <li>
+    <div>{{ post.type }}&nbsp;</div>
+    <div><a href="{{site.baseurl}}{{ post.url }}">&nbsp{{ post.title }}&nbsp;</a></div>
+    </li>
 
-<ul class=func>
+    {% assign longpoststagged = 1 %}
 
-<div class="split left" style="font-weight: bold;">
-      {% for post in site.categories.long %}
-      {% if post.tags contains page.tag %}
-          <li>
-            {{ post.type }} -
-          </li>
-          {% assign longnonempty = 1 %}
-      {% endif %}
-      {% endfor %}
-</div>
-<div class="split right">
-      {% for post in site.categories.long %}
-      {% if post.tags contains page.tag %}
-          <li>
-            <a href="{{site.baseurl}}{{ post.url }}">
-              {{ post.title }}
-            </a>
-          </li>
-      {% endif %}
-      {% endfor %}
-</div>
-
+    {% endif %}    
+    {% endfor %}
+      
 </ul>
 
-  {% if longnonempty != 1 %}
-  <div class="nopost">No posts found.</div>
-  {% endif %}
+{% if longpoststagged != 1 %}
+<div class="nopost">No posts found.</div>
+{% endif %}
+
 </div>

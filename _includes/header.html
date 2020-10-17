@@ -1,54 +1,52 @@
 <header>
-    <div style="max-width: 1800; margin-left: 10px;">{{ site.description }}</div>
+    <div style="margin-left: 10px;">{{ site.description }}</div>
 </header>
-
 <br>
 
-<ul class="flex-container">
-
-{% assign base_cull = page.url | remove: site.baseurl %}
-{% assign base_cull2 = base_cull | remove_first: "/" %}
-{% assign url_array = base_cull2 | split: "/" %}
+{% assign url_array = page.url | remove: site.baseurl | remove_first: "/" | split: "/" %}
 {% assign current_sub = url_array.first %}
 
- <!-- "main" links are drawn, by default the "short" and "long" posts pages -->
+<!-- navbar buttons are styled differently depending on current url, which is handled with if statements below -->
+<ul class="navover">
 
- {% for item in site.data.headerExtra %}
- <li class="flex-left">
-     {% if current_sub == item.link %}
-     <a href="{{site.baseurl}}/{{ item.link }}" class="currentHeader">{{ item.name | strip }}</a>
-     {% elsif current_sub == "tag" %}
-     <a href="{{site.baseurl}}/{{ item.link }}" class="currentHeader">{{ item.name | strip }}</a>
-     {% else %}
-     <a href="{{site.baseurl}}/{{ item.link }}" class="linkHeader">{{ item.name }}</a>
-     {% endif %}
- </li> &nbsp;&nbsp;
- {% endfor %}
-
-{% for item in site.data.headerMain %}
-<li class="flex-center">
-    {% if current_sub == item.link %}
-      <a href="{{site.baseurl}}/{{ item.link }}" class="currentHeader">{{ item.name }}</a>
+<!-- navright is styled with visibility set to hidden, i do not remember what the purpose is, but it counterbalances the right hand button somehow -->
+<li class="navleft">
+    {% if current_sub == "search" %}
+    <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
+    {% elsif current_sub == "tag" %}
+    <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
     {% else %}
-      <a href="{{site.baseurl}}/{{ item.link }}" class="linkHeader">{{ item.name }}</a>
+    <a href="{{site.baseurl}}/search" class="linkHeader">tag browse</a>
     {% endif %}
 </li>
-{% endfor %}
 
- <!-- "extra" links are drawn, by default solely a "search" by tags page -->
-
-{% for item in site.data.headerExtra %}
-<li class="flex-right">
-    {% if current_sub == item.link %}
-    <a href="{{site.baseurl}}/{{ item.link }}" class="currentHeader">{{ item.name | strip }}</a>
-    {% elsif current_sub == "tag" %}
-    <a href="{{site.baseurl}}/{{ item.link }}" class="currentHeader">{{ item.name | strip }}</a>
+<li class="navcenter">
+    {% if current_sub == "short" %}
+      <a href="{{site.baseurl}}/short" class="currentHeader">think hour</a>
     {% else %}
-    <a href="{{site.baseurl}}/{{ item.link }}" class="linkHeader">{{ item.name }}</a>
+      <a href="{{site.baseurl}}/short" class="linkHeader">think hour</a>
     {% endif %}
-</li> &nbsp;&nbsp;
-{% endfor %}
+</li>
+
+<li class="navcenter">
+  {% if current_sub == "long" %}
+    <a href="{{site.baseurl}}/long" class="currentHeader">big ideas</a>
+  {% else %}
+    <a href="{{site.baseurl}}/long" class="linkHeader">big ideas</a>
+  {% endif %}
+</li>
+
+<li class="navright">
+    {% if current_sub == "search" %}
+    <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
+    {% elsif current_sub == "tag" %}
+    <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
+    {% else %}
+    <a href="{{site.baseurl}}/search" class="linkHeader">tag browse</a>
+    {% endif %}
+</li>
 
 </ul>
 
+<!-- lastly underscore this simply using a horizontal rule to separate from page content -->
 <hr>

@@ -1,10 +1,11 @@
-//global formatting
+//global formatting and defaults
 
 body {
   font-family: Verdana, sans-serif, "Times New Roman";
   letter-spacing: 0px;
   word-spacing: 2px;
   font-size: 14px;
+  overflow-y: scroll;
 }
 
 a:link {
@@ -28,16 +29,6 @@ a:active {
   color: teal;
 }
 
-h2.tag {
-  text-align: center;
-  border-bottom: none;
-}
-
-h3.tag {
-  text-align: center;
-  border-bottom: none;
-}
-
 h2 {
   text-align: left;
   margin-top: 80px;
@@ -51,8 +42,15 @@ h3 {
 }
 
 img {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  width: 360px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+img.welcome {
+  width: auto;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 blockquote {
@@ -70,12 +68,52 @@ a img {
     color: none;
 }
 
-.nopost {
-  alignment: center;
-  text-align: center;
+small {
+  font-size: 10px;
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: square;
 }
 
 //styles for the header include
+
+.navover {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.navcenter{
+  display: flex;
+  margin: 1px;
+  padding: 5px;
+}
+
+.navright{
+  display: flex;
+  margin: 1px;
+  padding: 5px;
+  margin-left: auto;
+}
+
+.navleft{
+  display: flex;
+  margin: 1px;
+  padding: 5px;
+  margin-right: auto;
+  visibility: hidden;
+}
 
 a.linkHeader {
   color: teal;
@@ -96,33 +134,31 @@ a.currentHeader {
   box-shadow: -8px 10px #888888;
 }
 
-//styles for the post index pages
-
-ul {
-  list-style-type: square;
-}
-
-//li:not(:last-child) {
-//   margin-bottom: 20px;
-//}
-
-p {
-  margin-bottom: 20px;
-}
-
-ul.func {
-    list-style-type: none;
-    margin: 0;
-    margin-left: 240px;
-    padding: 0;
-    display: flex;
-}
-
-//general alignment styles
+// general and post indexes alignment styles
 
 div.over{
   margin: auto;
-  max-width: 720px
+  width: 480px;
+}
+
+ul.index {
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+ul.index > li {
+  display: flex;
+  flex-direction: row; 
+}
+
+ul.index > li > div:nth-child(2) {
+  display: flex;
+  margin-left: auto;
+  right: 0px;
+  text-align: right;
 }
 
 div.overpost{
@@ -130,61 +166,55 @@ div.overpost{
   max-width: 480px;
 }
 
-.flex-container {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.flex-center{
-  display: flex;
-  margin: 1px;
-  padding: 5px;
-}
-
-.flex-right{
-  display: flex;
-  margin: 1px;
-  padding: 5px;
-  margin-left: auto;
-}
-
-.flex-left{
-  display: flex;
-  margin: 1px;
-  padding: 5px;
-  margin-right: auto;
-  visibility: hidden;
-}
-
 .center {
   text-align: center;
 }
 
-// Tag search page components
-
-div.tagcloud{
-  margin: auto;
-  max-width: 480px;
-  display: flex;
-  flex-direction: column;
+.nopost {
+  text-align: center;
+  text-align: center;
 }
 
-div.tagcol{
+// "tag browse" page specific classes
+
+div.tagover{
   margin: auto;
-  width: 33%;
+  width: 480px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+}
+
+div.tagover > div{
+  width: 160px;
+  margin-bottom: 100px;
+}
+
+div.tagover > div > h3 {
+  font-size: 24px;
+  font-weight: normal;
+  border-bottom: none;
+  text-align: left;
+
+  color: white;
+  background-color: teal;
+  width: 24px;
+  padding: 5px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow:
+   12px 8px 0 0px white,
+   13px 7px 0 0px gray,
+   13px 9px 0 0px gray,
+   11px 9px 0 0px gray;
 }
 
 ul.tagpage {
   list-style-type: none;
-  margin: 0;
-  padding: 1px;
+  white-space: nowrap;
+  margin-left: 20px;
+  padding: 2px;
+}
+
+ul.tagpage > li{
+  margin-left: 10px;
 }
