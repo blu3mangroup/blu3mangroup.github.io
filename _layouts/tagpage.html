@@ -9,7 +9,7 @@ layout: default
 
 <h1>#{{ page.tag }}</h1>
 
-<h3>think hour</h3>
+<h3 class="tagindex">think hour</h3>
 
 <ul class="index">
 
@@ -18,10 +18,7 @@ layout: default
 
   {% assign date_print = post.date | date: "%F" | replace: "-", "/" %}
 
-  <li>
-  <div>{{ date_print | strip_newlines }}&nbsp;</div>
-  <div><a href="{{site.baseurl}}{{ post.url }}">{{ post.content | strip_html | truncate: 40 | strip }}&nbsp;</a></div>
-  </li>
+  <li><div ><a href="{{site.baseurl}}{{ post.url }}">{{ date_print | strip_newlines }}</a>&nbsp;</div></li>
 
   {% assign shortpoststagged = 1 %}
 
@@ -34,7 +31,7 @@ layout: default
 <div class="nopost">No posts found.</div>
 {% endif %}
 
-<h3>big ideas</h3>
+<h3 class="tagindex">big ideas</h3>
 
 <ul class="index">
 
@@ -42,8 +39,7 @@ layout: default
     {% if post.tags contains page.tag %}
  
     <li>
-    <div>{{ post.type }}&nbsp;</div>
-    <div><a href="{{site.baseurl}}{{ post.url }}">&nbsp{{ post.title }}&nbsp;</a></div>
+    <div><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}&nbsp;</a></div>
     </li>
 
     {% assign longpoststagged = 1 %}

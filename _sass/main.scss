@@ -31,39 +31,44 @@ a:active {
 
 h2 {
   text-align: left;
-  margin-top: 80px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  margin-top: 0px;
 }
 
 h3 {
   text-align: right;
-  margin-top: 50px;
+  margin-bottom: 40px;
+  margin-top: 0px;
   border-bottom: 1px solid teal;
 }
 
 img {
-  width: 360px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  width: 75%;
+  max-width: 360px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 img.welcome {
-  width: auto;
-  margin-top: 0px;
-  margin-bottom: 0px;
+  width: 80%;
+  max-width: 540px;
+  margin: auto;
+  box-shadow: -4px 8px 8px #969696;
 }
 
 blockquote {
  border-left: 5px solid teal;
- background-color: #f4f4f4;
- padding: 10px 20px;
+ color: rgb(101, 173, 173);
+ padding: 0px 20px;
+ margin-bottom: 0px;
+ margin-top: 0px;
 }
 
 a img {
     display: block;
     margin: 0 auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     background-color: none;
     color: none;
 }
@@ -73,37 +78,39 @@ small {
 }
 
 p {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  margin-top: 0px;
+  text-align: justify;
 }
 
 ul {
   list-style-type: square;
+  margin-bottom: 40px;
 }
 
 //styles for the header include
 
 .navover {
   list-style-type: none;
-  margin: 0;
-  padding: 0;
-  padding: 0;
-  margin: 0;
+  padding: 2px;
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  max-width: 640px;
 }
 
 .navcenter{
   display: flex;
-  margin: 1px;
-  padding: 5px;
+  margin: 2px;
+  padding: 4px;
 }
 
 .navright{
   display: flex;
-  margin: 1px;
-  padding: 5px;
+  margin: 2px;
+  padding: 4px;
   margin-left: auto;
 }
 
@@ -118,7 +125,7 @@ ul {
 a.linkHeader {
   color: teal;
   background-color: white;
-  font-size: 28px;
+  font-size: 22px;
   padding: 11px;
   transform: translate(-8px, 10px);
   text-decoration: none;
@@ -127,7 +134,7 @@ a.linkHeader {
 a.currentHeader {
   color: #000;
   background-color: white;
-  font-size: 28px;
+  font-size: 22px;
   text-decoration: none;
   border: 1px solid;
   padding: 10px;
@@ -138,55 +145,77 @@ a.currentHeader {
 
 div.over{
   margin: auto;
-  width: 480px;
+  width: 90%;
+  max-width: 480px;
 }
 
 ul.index {
   list-style-type: none;
   margin: auto;
+  text-align: center;
   padding: 0;
-  display: flex;
-  flex-direction: column;
+  //display: flex;
+  //flex-direction: column;
 }
 
-ul.index > li {
-  display: flex;
-  flex-direction: row; 
-}
+//ul.index > li {
+//  display: flex;
+//  flex-direction: row; 
+//}
 
-ul.index > li > div:nth-child(2) {
-  display: flex;
-  margin-left: auto;
-  right: 0px;
-  text-align: right;
-}
+//ul.index > li > div:nth-child(2) {
+//  display: flex;
+//  margin-left: auto;
+//  right: 0px;
+//  text-align: right;
+//}
 
 div.overpost{
   margin: auto;
+  width: 90%;
   max-width: 480px;
-}
-
-.center {
-  text-align: center;
 }
 
 .nopost {
   text-align: center;
-  text-align: center;
+}
+
+//post header infos
+
+div.postinfo {
+  display: block;
+  flex-direction: column; 
+  text-align: right;
+}
+
+div.postinfo > h1 {
+  text-align: right;
+  font-weight: normal;
+  margin: auto;
+}
+
+div.posttags {
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: right;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 // "tag browse" page specific classes
 
 div.tagover{
   margin: auto;
-  width: 480px;
+  max-width: 160px;
+  margin-bottom: 100px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 div.tagover > div{
-  width: 160px;
-  margin-bottom: 100px;
+  max-width: 160px;
+  margin-bottom: 0px;
 }
 
 div.tagover > div > h3 {
@@ -210,11 +239,53 @@ div.tagover > div > h3 {
 
 ul.tagpage {
   list-style-type: none;
-  white-space: nowrap;
+  text-align: right;
+//white-space: nowrap;
   margin-left: 20px;
+  margin-top: 20px;
   padding: 2px;
 }
 
-ul.tagpage > li{
-  margin-left: 10px;
+ul.tagpage > li {
+  margin-right: 0px;
+}
+
+@media only screen and (min-width: 600px) {
+
+  div.tagover{
+    margin: auto;
+    max-width: 640px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  div.tagover > div{
+    width: 160px;
+    margin-bottom: 60px;
+  }
+
+  ul.tagpage {
+    list-style-type: none;
+    text-align: right;
+    white-space: nowrap;
+    margin-left: 0px;
+    margin-top: 20px;
+    padding: 2px;
+  }
+
+  ul.tagpage > li{
+    margin-right: 20px;
+  }
+  
+}
+
+//tag indexes classes
+
+h3.tagindex {
+  text-align: right;
+  margin-bottom: 20px;
+  margin-top: 0px;
+  border-bottom: 1px solid teal;
 }

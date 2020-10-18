@@ -4,22 +4,32 @@ layout: default
 
 <div class="overpost">
 
-<p style="text-align: right">
+<div class="postinfo">
+
 {% if page.categories contains "long" %}
-<b>{{ page.title }}</b><br>
-{{ page.date | date: "%F" }}<br>
-<b>Type:</b> {{ page.type }}<br>
-{% else %}
-{{ page.date | date: "%F" }}<br>
-{% endif %}
+<h1>{{ page.title }}</h1>
+<br>
+{{ page.date | date: "%F" }}
+<br>
+<b>Type:</b> {{ page.type }}
 <br>
 
-<b>Tags:</b> {% for tag in page.tags %}
-{% capture tag_name %}{{ tag }}{% endcapture %}
-<a href="{{site.baseurl}}/tag/{{ tag_name }}"><nobr>&nbsp;#{{ tag_name }}</nobr></a>
-{% endfor %}
-</p>
+{% else %}
+<h1>{{ page.date | date: "%F" }}</h1>
+{% endif %}
+</div>
 
+<br>
+
+<div class="posttags">
+<b>Tags:</b>&nbsp;
+{% for tag in page.tags %}
+{% capture tag_name %}{{ tag }}{% endcapture %}
+<a href="{{site.baseurl}}/tag/{{ tag_name }}"><nobr>&nbsp;#{{ tag_name }}</nobr></a>&nbsp;
+{% endfor %}
+</div>
+
+<br>
 {{ content }}
 <br>
 
@@ -27,5 +37,5 @@ layout: default
 
 <br>
 &nbsp;
-<b>
+<br>
 &nbsp;

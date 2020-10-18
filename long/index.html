@@ -11,8 +11,8 @@ title: long
 {% for post in site.categories.long %}
 
       <li>
-      <div>{{ post.type }}&nbsp;</div>
-      <div><a href="{{site.baseurl}}{{ post.url }}">&nbsp{{ post.title }}&nbsp;</a></div>
+      <!--<div>{{ post.type }}&nbsp;</div>-->
+      <div><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}&nbsp;</a></div>
       </li>
 
       {% assign longpostsexist = 1 %}
