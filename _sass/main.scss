@@ -91,44 +91,40 @@ ul {
 //styles for the header include
 
 .navover {
-  list-style-type: none;
-  padding: 2px;
   margin: auto;
   display: flex;
+  padding: 2px;
+  position: relative;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   max-width: 640px;
 }
 
-.navcenter{
+.navleft{
   display: flex;
+  position: relative;
   margin: 2px;
   padding: 4px;
 }
 
 .navright{
   display: flex;
+  position: relative;
   margin: 2px;
   padding: 4px;
   margin-left: auto;
-}
-
-.navleft{
-  display: flex;
-  margin: 1px;
-  padding: 5px;
-  margin-right: auto;
-  visibility: hidden;
 }
 
 a.linkHeader {
   color: teal;
   background-color: white;
   font-size: 22px;
-  padding: 11px;
+  padding: 10px;
   transform: translate(-8px, 10px);
   text-decoration: none;
+  border: 1px solid white;
+  transition: border 0.4s;
 }
 
 a.currentHeader {
@@ -139,6 +135,61 @@ a.currentHeader {
   border: 1px solid;
   padding: 10px;
   box-shadow: -8px 10px #888888;
+  transition: transform box-shadow 0.4s;
+}
+
+// animations for desktop header
+
+@media only screen and (min-width: 640px) {
+
+  a.linkHeader:hover {
+    color: teal;
+    background-color: white;
+    font-size: 22px;
+    padding: 10px;
+    border: 1px solid gray;
+    text-decoration: none;
+    transform: translate(-4px, 5px);
+    box-shadow: -4px 5px #dbdbdb;
+
+  }
+
+  a.currentHeader {
+    color: #000;
+    background-color: white;
+    font-size: 22px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: -8px 10px #888888;
+    animation-name: currenthover;
+    animation-duration: 0.4s;
+  }
+  
+  @keyframes currenthover {
+    from {
+      transform: translate(-4px, 5px);
+      box-shadow: -4px 5px #dbdbdb;
+      border: 1px solid gray;
+    }
+    to {
+      transform: translate(0px, 0px);
+      box-shadow: -8px 10px #888888;
+      border: 1px solid black;
+    }
+  }
+
+  a.currentHeader:hover {
+    color: #000;
+    background-color: white;
+    font-size: 22px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: -6px 7.5px #888888;
+    transform: translate(-2px, 2.5px);
+  }
+
 }
 
 // general and post indexes alignment styles
@@ -231,10 +282,10 @@ div.tagover > div > h3 {
   margin-top: 20px;
   margin-bottom: 20px;
   box-shadow:
-   12px 8px 0 0px white,
-   13px 7px 0 0px gray,
-   13px 9px 0 0px gray,
-   11px 9px 0 0px gray;
+  -12px 8px 0 0px white,
+  -14px 6px 0 0px gray,
+  -14px 10px 0 0px gray,
+  -10px 10px 0 0px gray;
 }
 
 ul.tagpage {
@@ -250,7 +301,7 @@ ul.tagpage > li {
   margin-right: 0px;
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 640px) {
 
   div.tagover{
     margin: auto;
@@ -277,6 +328,62 @@ ul.tagpage > li {
 
   ul.tagpage > li{
     margin-right: 20px;
+  }
+
+  div.tagover > div > h3 {
+    font-size: 24px;
+    font-weight: normal;
+    border-bottom: none;
+    text-align: left;
+  
+    color: white;
+    background-color: teal;
+    width: 24px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow:
+     -12px 8px 0 0px white,
+     -13px 7px 0 0px gray,
+     -13px 9px 0 0px gray,
+     -11px 9px 0 0px gray;
+
+    animation: floaty;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+  }
+
+  div.tagover > #column1 > h3 {
+    animation-delay: 0s;
+  }
+
+  div.tagover > #column2 > h3 {
+    animation-delay: 0.4s;
+  }
+
+  div.tagover > #column3 > h3 {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes floaty {
+    from {
+    transform: translate( 0px, 0px);
+     box-shadow:
+     -12px 8px 0 0px white,
+     -13px 7px 0 0px gray,
+     -13px 9px 0 0px gray,
+     -11px 9px 0 0px gray;
+    }
+    to {
+      transform: translate(-6px, 4px);
+      box-shadow:
+      -6px 4px 0 0px white,
+      -7px 3px 0 0px gray,
+      -7px 5px 0 0px gray,
+      -5px 5px 0 0px gray;
+    }
   }
   
 }

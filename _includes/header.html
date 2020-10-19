@@ -6,36 +6,29 @@
 {% assign current_sub = url_array.first %}
 
 <!-- navbar buttons are styled differently depending on current url, which is handled with if statements below -->
-<ul class="navover">
+<div class="navover">
+<div class="navleft">
 
-<!-- navright is styled with visibility set to hidden, i do not remember what the purpose is, but it counterbalances the right hand button somehow
-<li class="navleft">
-    {% if current_sub == "search" %}
-    <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
-    {% elsif current_sub == "tag" %}
-    <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
-    {% else %}
-    <a href="{{site.baseurl}}/search" class="linkHeader">tag browse</a>
-    {% endif %}
-</li>-->
-
-<li class="navcenter">
     {% if current_sub == "short" %}
       <a href="{{site.baseurl}}/short" class="currentHeader">think hour</a>
     {% else %}
       <a href="{{site.baseurl}}/short" class="linkHeader">think hour</a>
     {% endif %}
-</li>
 
-<li class="navcenter">
+</div>
+
+<div class="navleft">
+
   {% if current_sub == "long" %}
     <a href="{{site.baseurl}}/long" class="currentHeader">big ideas</a>
   {% else %}
     <a href="{{site.baseurl}}/long" class="linkHeader">big ideas</a>
   {% endif %}
-</li>
 
-<li class="navright">
+</div>
+
+<div class="navright">
+
     {% if current_sub == "search" %}
     <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
     {% elsif current_sub == "tag" %}
@@ -43,9 +36,9 @@
     {% else %}
     <a href="{{site.baseurl}}/search" class="linkHeader">tag browse</a>
     {% endif %}
-</li>
 
-</ul>
+</div>
+</div>
 
 <!-- lastly underscore this simply using a horizontal rule to separate from page content -->
 <hr>

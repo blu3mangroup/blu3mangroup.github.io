@@ -38,13 +38,13 @@ The code can be started from this point, and if at any point something goes wron
 <!-- the increment i will count how many tag lists are drawn, and as such will initiate and end divs that serve as columns for each third of the amount -->
 
 {% if forloop.index == 1 %}
-<div>
+<div id="column1">
 {% elsif forloop.index == col2 %}
 </div>
-<div>
+<div id="column2">
 {% elsif forloop.index == col3 %}
 </div>
-<div>
+<div id="column3">
 {% endif %}
 
 <!-- we draw a header and a list of tags after they pass a check against the current iteration character -->
