@@ -142,24 +142,31 @@ a.currentHeader {
 
   a.linkHeader {
     color: teal;
+    border: 1px solid white;
     background-color: white;
     font-size: 22px;
     padding: 10px;
     transform: translate(-8px, 10px);
     text-decoration: none;
-    border: 1px solid white;
-    transition: border transform box-shadow 0.4s;
   }
 
   a.linkHeader:hover {
-    color: teal;
-    background-color: white;
-    font-size: 22px;
-    padding: 10px;
-    border: 1px solid gray;
-    text-decoration: none;
-    transform: translate(-4px, 5px);
-    box-shadow: -4px 5px #dbdbdb;
+    animation-name: linkhover;
+    animation-duration: 0.2s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes linkhover {
+    from {
+      border: 1px solid white;
+      transform: translate(-8px, 10px);
+      box-shadow: none;
+    }
+    to {
+      border: 1px solid gray;
+      transform: translate(-4px, 5px);
+      box-shadow: -4px 5px #dbdbdb;
+    }
   }
 
   a.currentHeader {
