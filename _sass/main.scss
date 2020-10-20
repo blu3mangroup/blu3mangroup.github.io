@@ -124,7 +124,6 @@ a.linkHeader {
   transform: translate(-8px, 10px);
   text-decoration: none;
   border: 1px solid white;
-  transition: border 0.4s;
 }
 
 a.currentHeader {
@@ -135,12 +134,22 @@ a.currentHeader {
   border: 1px solid;
   padding: 10px;
   box-shadow: -8px 10px #888888;
-  transition: transform box-shadow 0.4s;
 }
 
 // animations for desktop header
 
 @media only screen and (min-width: 640px) {
+
+  a.linkHeader {
+    color: teal;
+    background-color: white;
+    font-size: 22px;
+    padding: 10px;
+    transform: translate(-8px, 10px);
+    text-decoration: none;
+    border: 1px solid white;
+    transition: border transform box-shadow 0.4s;
+  }
 
   a.linkHeader:hover {
     color: teal;
@@ -151,7 +160,6 @@ a.currentHeader {
     text-decoration: none;
     transform: translate(-4px, 5px);
     box-shadow: -4px 5px #dbdbdb;
-
   }
 
   a.currentHeader {
@@ -162,8 +170,20 @@ a.currentHeader {
     border: 1px solid;
     padding: 10px;
     box-shadow: -8px 10px #888888;
+    transition: transform box-shadow 0.4s;
     animation-name: currenthover;
     animation-duration: 0.4s;
+  }
+
+  a.currentHeader:hover {
+    color: #000;
+    background-color: white;
+    font-size: 22px;
+    text-decoration: none;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow: -6px 7.5px #888888;
+    transform: translate(-2px, 2.5px);
   }
   
   @keyframes currenthover {
@@ -177,17 +197,6 @@ a.currentHeader {
       box-shadow: -8px 10px #888888;
       border: 1px solid black;
     }
-  }
-
-  a.currentHeader:hover {
-    color: #000;
-    background-color: white;
-    font-size: 22px;
-    text-decoration: none;
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: -6px 7.5px #888888;
-    transform: translate(-2px, 2.5px);
   }
 
 }
