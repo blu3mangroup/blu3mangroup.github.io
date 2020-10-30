@@ -25,7 +25,7 @@ layout: default
 <b>Tags:</b>&nbsp;
 {% for tag in page.tags %}
 {% capture tag_name %}{{ tag }}{% endcapture %}
-<a href="{{site.baseurl}}/tag/{{ tag_name }}"><nobr>&nbsp;#{{ tag_name }}</nobr></a>&nbsp;
+<a href="{{site.baseurl}}/tag/{{ tag_name | downcase }}"><nobr>&nbsp;#{{ tag_name }}</nobr></a>&nbsp;
 {% endfor %}
 </div>
 
