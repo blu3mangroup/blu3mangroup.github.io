@@ -2,38 +2,41 @@
 layout: default
 ---
 
-<div class="overpost">
+<article>
 
-<div class="postinfo">
+    <header>
+        {% if page.categories contains "long" %}
+        <h1>{{ page.title }}</h1>
+        {% else %}
+        <h1>{{ page.date | date: "%F" }}</h1>
+        {% endif %}
+    </header>
 
-{% if page.categories contains "long" %}
-<h1>{{ page.title }}</h1>
-<br>
-{{ page.date | date: "%F" }}
-<br>
-<b>Type:</b> {{ page.type }}
-<br>
+    {% if page.categories contains "long" %}
+    <aside>
+        {{ page.date | date: "%F" }}
+        <br>
 
-{% else %}
-<h1>{{ page.date | date: "%F" }}</h1>
-{% endif %}
-</div>
+        <b>Type:</b> {{ page.type }}
+        <br>
+    </aside>
+    {% endif %}
 
-<br>
+    <nav>
+        <b>Tags:</b>&nbsp;
+        {% for tag in page.tags %}
+        {% capture tag_name %}{{ tag }}{% endcapture %}
+        <a href="{{site.baseurl}}/tag/{{ tag_name | downcase }}"><nobr>&nbsp;#{{ tag_name }}</nobr></a>&nbsp;
+        {% endfor %}
+    </nav>
+    <br>
 
-<div class="posttags">
-<b>Tags:</b>&nbsp;
-{% for tag in page.tags %}
-{% capture tag_name %}{{ tag }}{% endcapture %}
-<a href="{{site.baseurl}}/tag/{{ tag_name | downcase }}"><nobr>&nbsp;#{{ tag_name }}</nobr></a>&nbsp;
-{% endfor %}
-</div>
+    <main>
+        {{ content }}
+    </main>
+    <br>
 
-<br>
-{{ content }}
-<br>
-
-</div>
+</article>
 
 <br>
 &nbsp;

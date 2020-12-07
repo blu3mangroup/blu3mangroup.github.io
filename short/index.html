@@ -5,7 +5,7 @@ title: short
 
 {% assign shortpostsexist = 0 %}
 
-<div class="over">
+<nav class="index">
 <ul class="index">
 {% for post in site.categories.short %}
 
@@ -42,8 +42,8 @@ title: short
     {% assign shortpostsexist = 1 %}
 {% endfor %}
 </ul>
-</div>
+</nav>
 
 {% if shortpostsexist != 1 %}
-<div class="nopost">No posts found.</div>
+<section class="nopost">No posts found.</section>
 {% endif %}

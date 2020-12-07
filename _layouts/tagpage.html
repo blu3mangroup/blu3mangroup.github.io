@@ -5,52 +5,52 @@ layout: default
 {% assign shortpoststagged = 0 %}
 {% assign longpoststagged = 0 %}
 
-<div class=over>
+<nav class=index>
 
-<h1>#{{ page.tag }}</h1>
+  <h1>#{{ page.tag }}</h1>
 
-<h3 class="tagindex">think hour</h3>
+    <h3>think hour</h3>
 
-<ul class="index">
+      <ul class="index">
 
-  {% for post in site.categories.short %}
-  {% if post.tags contains page.tag %}
+        {% for post in site.categories.short %}
+        {% if post.tags contains page.tag %}
 
-  {% assign date_print = post.date | date: "%F" | replace: "-", "/" %}
+        {% assign date_print = post.date | date: "%F" | replace: "-", "/" %}
 
-  <li><div ><a href="{{site.baseurl}}{{ post.url }}">{{ date_print | strip_newlines }}</a>&nbsp;</div></li>
+        <li><div ><a href="{{site.baseurl}}{{ post.url }}">{{ date_print | strip_newlines }}</a>&nbsp;</div></li>
 
-  {% assign shortpoststagged = 1 %}
+        {% assign shortpoststagged = 1 %}
 
-  {% endif %}
-  {% endfor %}
+        {% endif %}
+        {% endfor %}
 
-</ul>
+      </ul>
 
-{% if shortpoststagged != 1 %}
-<div class="nopost">No posts found.</div>
-{% endif %}
+      {% if shortpoststagged != 1 %}
+      <div class="nopost">No posts found.</div>
+      {% endif %}
 
-<h3 class="tagindex">big ideas</h3>
+    <h3 class="tagindex">big ideas</h3>
 
-<ul class="index">
+      <ul class="index">
 
-    {% for post in site.categories.long %}
-    {% if post.tags contains page.tag %}
- 
-    <li>
-    <div><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}&nbsp;</a></div>
-    </li>
-
-    {% assign longpoststagged = 1 %}
-
-    {% endif %}    
-    {% endfor %}
+          {% for post in site.categories.long %}
+          {% if post.tags contains page.tag %}
       
-</ul>
+          <li>
+          <div><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}&nbsp;</a></div>
+          </li>
 
-{% if longpoststagged != 1 %}
-<div class="nopost">No posts found.</div>
-{% endif %}
+          {% assign longpoststagged = 1 %}
 
-</div>
+          {% endif %}    
+          {% endfor %}
+            
+      </ul>
+
+    {% if longpoststagged != 1 %}
+    <section class="nopost">No posts found.</section>
+    {% endif %}
+
+    </nav>

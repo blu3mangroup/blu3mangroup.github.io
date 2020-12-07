@@ -1,0 +1,28 @@
+Payment & Privacy - Complacency, Angry, Discovery & Hierarchy
+
+Sections:
+1: 2 Factor Phone Paypal, privacy concerns and entry regulatory investigation
+2: outlines of SCA, PSD2 as well as EU and GDPR involvement, concerns on end user and how much can you protect your data yourself anyway, even retards use ad blockers for example.
+3: The China Connection - the chinese attempt to buy and conceiving of global scale of things, payment processing analogs in various countries etc
+4: Solution: personal responsibilty and razing brussels? cryptocurrency? gold? i do not want to have a fucking phone or an SMS number. is e-mail protocol not enough? why don't we all just have secure lines. a phone number is not a possession 
+5: The Phone as a person-extension: still necessary? still exists? what makes sms specialer than email? come on man
+
+str8 from the spigots:
+https://www.barclaycard.co.uk/business/news-and-insights/what-is-psd2
+https://www.paypal.com/uk/webapps/mpp/psd2
+
+what the hell is this then?
+
+https://en.wikipedia.org/wiki/Strong_customer_authentication#History
+https://www.davidfroud.com/does-the-psd2-worry-you/
+https://www.fintechfutures.com/2020/01/the-extension-of-sca-a-sensible-move-or-an-unnecessary-delay/
+
+https://www.finextra.com/blogposting/16732/are-banks-about-to-make-a-mistake-using-otps-via-sms
+https://www.onespan.com/blog/psd2-end-sms-based-authentication
+https://noknok.com/blog-post/does-psd2-practically-eliminate-sms-otp/
+
+https://www.theguardian.com/money/2019/jul/27/thousands-without-mobiles-could-be-frozen-out-of-online-payments
+
+https://en.wikipedia.org/wiki/General_Data_Protection_Regulation
+https://gdpr.eu/what-is-gdpr/
+

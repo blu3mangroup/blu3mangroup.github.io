@@ -1,13 +1,15 @@
 <header>
-    <div style="margin-left: 10px;">{{ site.description }}</div>
+    <header class="text">{{ site.description }}</header>
+    <header class="right">
+      <small>[ <a href="{{site.url}}">splash</a> | <a href="http://enj0y.net">master</a> ]</small>
+    </header>
 </header>
 
 {% assign url_array = page.url | remove: site.baseurl | remove_first: "/" | split: "/" %}
 {% assign current_sub = url_array.first %}
 
-<!-- navbar buttons are styled differently depending on current url, which is handled with if statements below -->
-<div class="navover">
-<div class="navleft">
+<nav class="header">
+<nav class="left">
 
     {% if current_sub == "short" %}
       <a href="{{site.baseurl}}/short" class="currentHeader">think hour</a>
@@ -15,9 +17,9 @@
       <a href="{{site.baseurl}}/short" class="linkHeader">think hour</a>
     {% endif %}
 
-</div>
+</nav>
 
-<div class="navleft">
+<nav class="left">
 
   {% if current_sub == "long" %}
     <a href="{{site.baseurl}}/long" class="currentHeader">big ideas</a>
@@ -25,9 +27,9 @@
     <a href="{{site.baseurl}}/long" class="linkHeader">big ideas</a>
   {% endif %}
 
-</div>
+</nav>
 
-<div class="navright">
+<nav class="right">
 
     {% if current_sub == "search" %}
     <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
@@ -37,8 +39,7 @@
     <a href="{{site.baseurl}}/search" class="linkHeader">tag browse</a>
     {% endif %}
 
-</div>
-</div>
+</nav>
+</nav>
 
-<!-- lastly underscore this simply using a horizontal rule to separate from page content -->
 <hr>

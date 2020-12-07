@@ -2,95 +2,195 @@
 
 body {
   font-family: Verdana, sans-serif, "Times New Roman";
+  color: black;
   letter-spacing: 0px;
   word-spacing: 2px;
   font-size: 14px;
   overflow-y: scroll;
-}
+  background-color: white;
 
-a:link {
-  text-decoration: none;
-  color: teal;
-}
+  a:link {
+    text-decoration: none;
+    color: teal;
+  }
 
-a:visited {
-  text-decoration: none;
-  color: teal;
-}
+  a:visited {
+    text-decoration: none;
+    color: teal;
+  }
 
-a:hover {
-  text-decoration: none;
-  color: white;
-  background-color: #999;
-}
+  a:hover {
+    text-decoration: none;
+    color: white;
+    background-color: #999;
+  }
 
-a:active {
-  text-decoration: none;
-  color: teal;
-}
+  a:active {
+    text-decoration: none;
+    color: teal;
+  }
 
-h2 {
-  text-align: left;
-  margin-bottom: 40px;
-  margin-top: 0px;
-}
+  h1 {
+    text-align: right;
+  }
 
-h3 {
-  text-align: right;
-  margin-bottom: 40px;
-  margin-top: 0px;
-  border-bottom: 1px solid teal;
-}
+  @mixin h2base {
 
-img {
-  //max-width: 75%;
-  max-width: 360px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    transform-origin: -100% 1000%;
 
-img.welcome {
-  width: 80%;
-  max-width: 540px;
-  margin: auto;
-  box-shadow: -4px 8px 8px #969696;
-}
+  }
 
-blockquote {
- border-left: 5px solid teal;
- color: rgb(101, 173, 173);
- padding: 0px 20px;
- margin-bottom: 0px;
- margin-top: 0px;
-}
-
-a img {
+  h2 {
+    @include h2base;
     display: block;
-    margin: 0 auto;
+    position: relative;
+    justify-self: stretch;
+    text-align: justify;
+
+    background-color: rgba(0, 128, 128, 0.8);
+    color: white;
+    font-weight: normal;
+    font-size: 22px;
+    text-shadow: -1px -1px 6px #3f3f3f;
+    text-indent: 4px;
+
+    //transform: scale(1);
+    //opacity: 1;
+
+    //animation: tagidle1-light;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-delay: -0.4s;
+
+    &::before {
+      @include h2base;
+      content: "";
+      position: absolute;
+      z-index: -1;
+      
+      //outline: 20px solid rgba(100, 100, 100, 0.8);
+      //outline-offset: -20px;
+      background-color: rgba(100, 100, 100, 0.8);
+
+      transform: scale(0.98);
+      opacity: 0.95;
+
+      animation: tagidle2-light;
+      animation-direction: alternate;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+      animation-delay: -0.2s;
+    }
+
+    &::after {
+      @include h2base;
+      content: "";
+      position: absolute;
+      z-index: -2;
+
+      outline: 1px solid rgb(0, 0, 0);
+      outline-offset: -1px;
+
+      top: 0px;
+      transform: scale(0.94);
+      opacity: 0.7;
+
+      animation: tagidle3-light;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+    }
+
+    @keyframes tagidle1-light {
+  
+      100% {
+        transform: scale(0.99);
+        opacity: 1;
+      }
+    
+    }
+      
+    @keyframes tagidle2-light {
+      
+        100% {
+          transform: scale(0.96);
+          opacity: 0.8;
+        }
+      
+    }
+      
+    @keyframes tagidle3-light {
+      
+        100% {
+          transform: scale(0.92);
+          opacity: 0.5;
+        }
+      
+    }
+  }
+
+  h3 {
+    text-align: right;
+    border-bottom: 1px solid;
+    border-image: linear-gradient(to left, teal, white) 1 1%;
+  }
+
+  img {
     margin-bottom: 10px;
     margin-top: 10px;
-    background-color: none;
-    color: none;
+  }
+
+  blockquote {
+  border-left: 5px solid teal;
+  color: rgb(101, 173, 173);
+  padding: 0px 20px;
+  }
+
+  a img {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      background-color: none;
+      color: none;
+  }
+
+  small {
+    font-size: 10px;
+  }
 }
 
-small {
-  font-size: 10px;
+//styles for the header include (header and main navigation)
+
+header {
+  padding-left: 4px;
+  padding-right: 4px;
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .text {
+    display: flex;
+    margin-right: auto;
+  }
+  
+  .links {
+    display: flex;
+    margin-left: auto;
+  }
 }
 
-p {
-  margin-bottom: 40px;
-  margin-top: 0px;
-  text-align: justify;
-}
+nav.header {
 
-ul {
-  list-style-type: square;
-  margin-bottom: 40px;
-}
-
-//styles for the header include
-
-.navover {
   margin: auto;
   display: flex;
   padding: 2px;
@@ -99,316 +199,540 @@ ul {
   justify-content: center;
   align-items: center;
   max-width: 640px;
-}
 
-.navleft{
-  display: flex;
-  position: relative;
-  margin: 2px;
-  padding: 4px;
-}
-
-.navright{
-  display: flex;
-  position: relative;
-  margin: 2px;
-  padding: 4px;
-  margin-left: auto;
-}
-
-a.linkHeader {
-  color: teal;
-  background-color: white;
-  font-size: 22px;
-  padding: 10px;
-  transform: translate(-8px, 10px);
-  text-decoration: none;
-  border: 1px solid white;
-}
-
-a.currentHeader {
-  color: #000;
-  background-color: white;
-  font-size: 22px;
-  text-decoration: none;
-  border: 1px solid;
-  padding: 10px;
-  box-shadow: -8px 10px #888888;
-}
-
-// animations for desktop header
-
-@media only screen and (min-width: 640px) {
-
+  nav.left{
+    display: flex;
+    position: relative;
+    margin: 2px;
+    padding: 4px;
+  }
+  
+  nav.right{
+    display: flex;
+    position: relative;
+    margin: 2px;
+    padding: 4px;
+    margin-left: auto;
+  }
+  
   a.linkHeader {
     color: teal;
-    border: 1px solid white;
     background-color: white;
     font-size: 22px;
     padding: 10px;
-    transform: translate(-8px, 10px);
     text-decoration: none;
+    transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    outline: 1px solid white;
+    outline-offset: -1px;
+    transform: translate(-8px, 10px);
+    box-shadow: none;
   }
-
-  a.linkHeader:hover {
-    animation-name: linkhover;
-    animation-duration: 0.2s;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes linkhover {
-    from {
-      border: 1px solid white;
-      transform: translate(-8px, 10px);
-      box-shadow: none;
-    }
-    to {
-      border: 1px solid gray;
-      transform: translate(-4px, 5px);
-      box-shadow: -4px 5px #dbdbdb;
-    }
-  }
-
+  
   a.currentHeader {
     color: #000;
     background-color: white;
     font-size: 22px;
     text-decoration: none;
-    border: 1px solid;
+    outline: 1px solid black;
+    outline-offset: -1px;
     padding: 10px;
-    box-shadow: -8px 10px #888888;
-    transition: transform box-shadow 0.4s;
-    animation-name: currenthover;
-    animation-duration: 0.4s;
-  }
-
-  a.currentHeader:hover {
-    color: #000;
-    background-color: white;
-    font-size: 22px;
-    text-decoration: none;
-    border: 1px solid;
-    padding: 10px;
-    box-shadow: -6px 7.5px #888888;
-    transform: translate(-2px, 2.5px);
+    animation-name: currentfloat;
+    animation-duration: 0.2s;
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+    transition: all 0.2s linear;
+    transform: translate(-1px, 1px);
+    box-shadow: -7px 7px #888888;
   }
   
-  @keyframes currenthover {
+  @keyframes currentfloat {
     from {
       transform: translate(-4px, 5px);
-      box-shadow: -4px 5px #dbdbdb;
-      border: 1px solid gray;
+      box-shadow: -4px 4px #bebebe;
+      outline: 1px solid gray;
     }
     to {
-      transform: translate(0px, 0px);
-      box-shadow: -8px 10px #888888;
-      border: 1px solid black;
+      transform: translate(-1px, 1px);
+      box-shadow: -7px 7px #888888;
+      outline: 1px solid black;
+    }
+  }
+  
+  @media only screen and (min-width: 640px) {
+  
+    a.linkHeader:hover {
+      color: teal;
+      background-color: white;
+      font-size: 22px;
+      padding: 10px;
+      text-decoration: none;
+      transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      outline: 1px solid #a7a7a7;
+      outline-offset: -1px;
+      transform: translate(-5px, 5px);
+      box-shadow: -3px 3px #d1d1d1;
+    }
+  
+    a.currentHeader:hover {
+      color: #000;
+      background-color: white;
+      font-size: 22px;
+      text-decoration: none;
+      outline: 1px solid;
+      outline-offset: -1px;
+      padding: 10px;
+      transition: all 0.2s ease;
+      transform: translate(-4px, 4px);
+      box-shadow: -4px 4px #bebebe;
+    }
+  
+  }
+}
+
+// index pages (short, long, tags and tag-specific) classes
+
+nav.index {
+
+  margin: auto;
+  width: 90%;
+  max-width: 480px;
+
+  h1{
+    text-align: center;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+  }
+
+  ul {
+
+    list-style-type: none;
+    margin: auto;
+    text-align: center;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+  }
+}
+
+div.indexsplit {
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+
+  @mixin h2index {
+    transform-origin: -25px 50px;
+  }
+
+  h2 {
+    @include h2index;
+    
+    height: auto;
+    width: auto;
+    text-align: left;
+    text-decoration: none;
+    text-indent: 8px;
+    padding: 4px;
+    font-size: 16px;
+    flex-grow: 1;
+
+    //transform: scale(1);
+
+    //animation: tagidle1-mid;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-delay: -0.4s;
+
+    &::before {
+      @include h2index;
+      content: "";
+
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      top: 0px;
+      left: 0px;
+
+      background-color: rgba(100, 100, 100, 0.8);
+  
+      transform: scale(0.9);
+      opacity: 0.95;
+      
+      animation: tagidle2-mid;
+      animation-direction: alternate;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+      animation-delay: -0.2s;
+    }
+
+    &::after {
+      @include h2index;
+      content: " ";
+
+      position: absolute;
+      height: 100%;
+      width: 100%;
+
+      outline: 1px solid rgb(0, 0, 0);
+      outline-offset: -1px;
+
+      top: 0px;
+      left: 0px;
+  
+      transform: scale(0.82);
+      opacity: 0.7;
+  
+      animation: tagidle3-mid;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+    }
+
+    @keyframes tagidle1-mid {
+
+      100% {
+        transform: scale(0.95);
+      }
+    }
+    
+    @keyframes tagidle2-mid {
+      
+        100% {
+          transform: scale(0.84);
+          opacity: 0.8;
+        }
+      
+    }
+      
+    @keyframes tagidle3-mid {
+      
+        100% {
+          transform: scale(0.75);
+          opacity: 0.5;
+        }
+      
     }
   }
 
+  ul.index {
+    text-align: right;
+    flex-grow: 3;
+  }
+
+  ul.index > li {
+    border-bottom: 1px dotted;
+    border-image: linear-gradient(to left, gray, white) 1 1%;
+    margin-bottom: 4px;
+  }
 }
 
-// general and post indexes alignment styles
+nav.glossary {
 
-div.over{
-  margin: auto;
-  width: 90%;
-  max-width: 480px;
-}
-
-ul.index {
-  list-style-type: none;
-  margin: auto;
-  text-align: center;
-  padding: 0;
-  //display: flex;
-  //flex-direction: column;
-}
-
-//ul.index > li {
-//  display: flex;
-//  flex-direction: row; 
-//}
-
-//ul.index > li > div:nth-child(2) {
-//  display: flex;
-//  margin-left: auto;
-//  right: 0px;
-//  text-align: right;
-//}
-
-div.overpost{
-  margin: auto;
-  width: 90%;
-  max-width: 480px;
-}
-
-.nopost {
-  text-align: center;
-}
-
-//post header infos
-
-div.postinfo {
-  display: block;
-  flex-direction: column; 
-  text-align: right;
-}
-
-div.postinfo > h1 {
-  text-align: right;
-  font-weight: normal;
-  margin: auto;
-}
-
-div.posttags {
-  display: flex;
-  flex-direction: row; 
-  flex-wrap: wrap;
-  justify-content: right;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-// "tag browse" page specific classes
-
-div.tagover{
   margin: auto;
   max-width: 160px;
   margin-bottom: 100px;
   display: flex;
   flex-direction: column;
+
+  ul {
+    list-style-type: none;
+    text-align: right;
+    margin-left: 20px;
+    padding: 2px;
+
+    li{
+      margin-right: 0px;
+    }
+  }
+
+  @mixin h2glossary {
+    height: 36px;
+    width: 36px;
+    transform-origin: -100% 150%;
+  }
+
+  h2 {
+    @include h2glossary;
+
+    display: inline-block;
+    text-align: center;
+    text-indent: 0px;
+
+    //transform: scale(1);
+
+    //animation: tagidle1-mid;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: 2s;
+    animation-delay: -0.4s;
+
+    &::before {
+      @include h2glossary;
+      content: "";
+
+      display: block;
+      position: absolute;
+
+      background-color: rgba(100, 100, 100, 0.8);
+  
+      transform: scale(0.9);
+      opacity: 0.95;
+      
+      animation: tagidle2-heavy;
+      animation-direction: alternate;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+      animation-delay: -0.2s;
+    }
+
+    &::after {
+      @include h2glossary;
+      content: " ";
+
+      display: block;
+      position: absolute;
+
+      outline: 1px solid rgb(0, 0, 0);
+      outline-offset: -1px;
+
+      top: 0px;
+  
+      transform: scale(0.82);
+      opacity: 0.7;
+  
+      animation: tagidle3-heavy;
+      animation-direction: alternate;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+    }
+
+    @keyframes tagidle1-heavy {
+
+      100% {
+        transform: scale(0.95);
+      }
+    }
+    
+    @keyframes tagidle2-heavy {
+      
+        100% {
+          transform: scale(0.84);
+          opacity: 0.8;
+        }
+      
+    }
+      
+    @keyframes tagidle3-heavy {
+      
+        100% {
+          transform: scale(0.75);
+          opacity: 0.5;
+        }
+      
+    }
+  }
+
 }
 
-div.tagover > div{
-  max-width: 160px;
-  margin-bottom: 0px;
-}
-
-div.tagover > div > h3 {
-  font-size: 24px;
-  font-weight: normal;
-  border-bottom: none;
-  text-align: left;
-
-  color: white;
-  background-color: teal;
-  width: 24px;
-  padding: 5px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  box-shadow:
-  -12px 8px 0 0px white,
-  -14px 6px 0 0px gray,
-  -14px 10px 0 0px gray,
-  -10px 10px 0 0px gray;
-}
-
-ul.tagpage {
-  list-style-type: none;
-  text-align: right;
-//white-space: nowrap;
-  margin-left: 20px;
-  margin-top: 20px;
-  padding: 2px;
-}
-
-ul.tagpage > li {
-  margin-right: 0px;
+div.glossarysplit {
+    max-width: 160px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 1;
 }
 
 @media only screen and (min-width: 640px) {
 
-  div.tagover{
+  nav.glossary {
     margin: auto;
     max-width: 640px;
     margin-bottom: 100px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  }
 
-  div.tagover > div{
-    width: 160px;
-    margin-bottom: 60px;
-  }
-
-  ul.tagpage {
-    list-style-type: none;
-    text-align: right;
-    white-space: nowrap;
-    margin-left: 0px;
-    margin-top: 20px;
-    padding: 2px;
-  }
-
-  ul.tagpage > li{
-    margin-right: 20px;
-  }
-
-  div.tagover > div > h3 {
-    font-size: 24px;
-    font-weight: normal;
-    border-bottom: none;
-    text-align: left;
+    ul {
+      list-style-type: none;
+      text-align: right;
+      white-space: nowrap;
+      margin-left: 0px;
+      margin-top: 20px;
+      padding: 2px;
   
-    color: white;
-    background-color: teal;
-    width: 24px;
-    padding: 5px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    box-shadow:
-     -12px 8px 0 0px white,
-     -13px 7px 0 0px gray,
-     -13px 9px 0 0px gray,
-     -11px 9px 0 0px gray;
-
-    animation: floaty;
-    animation-timing-function: ease-out;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-    animation-duration: 1s;
-  }
-
-  div.tagover > #column1 > h3 {
-    animation-delay: 0s;
-  }
-
-  div.tagover > #column2 > h3 {
-    animation-delay: 0.4s;
-  }
-
-  div.tagover > #column3 > h3 {
-    animation-delay: 0.8s;
-  }
-
-  @keyframes floaty {
-    from {
-    transform: translate( 0px, 0px);
-     box-shadow:
-     -12px 8px 0 0px white,
-     -13px 7px 0 0px gray,
-     -13px 9px 0 0px gray,
-     -11px 9px 0 0px gray;
+      li{
+        margin-right: 20px;
+      }
     }
-    to {
-      transform: translate(-6px, 4px);
-      box-shadow:
-      -6px 4px 0 0px white,
-      -7px 3px 0 0px gray,
-      -7px 5px 0 0px gray,
-      -5px 5px 0 0px gray;
+
+    div.lookcatcher {
+
+        position: relative;
+        z-index: 1;
+    
+        &:hover {
+    
+          h2 {
+            //animation: tagzoom1;
+            animation-direction: normal;
+            animation-timing-function: ease;
+            animation-fill-mode: both;
+            animation-iteration-count: 1;
+            animation-duration: 0.4s;
+          }
+    
+          h2::before {
+            animation: tagzoom2;
+            animation-direction: normal;
+            animation-timing-function: ease;
+            animation-fill-mode: both;
+            animation-iteration-count: 1;
+            animation-duration: 0.4s;
+          }
+    
+          h2::after {
+            animation: tagzoom3;
+            animation-direction: normal;
+            animation-timing-function: ease;
+            animation-fill-mode: both;
+            animation-iteration-count: 1;
+            animation-duration: 0.4s;
+          }         
+        }
+
+        @keyframes tagzoom1 {
+
+          0% {
+            transform: scale(0.95);
+          }
+        
+          100% {
+            transform: translate(-16px, -2px) scale(1);
+      
+          }
+        
+        }
+      
+        @keyframes tagzoom2 {
+      
+          0% {
+            transform: scale(0.84);
+            opacity: 0.8;
+          }
+        
+          100% {
+            transform: translate(-2px, 6px) scale(0.7);
+            opacity: 0.95;
+          }
+        
+        }
+      
+        @keyframes tagzoom3 {
+      
+          0% {
+            transform: scale(0.75);
+            opacity: 0.5;
+          }
+        
+          100% {
+            transform: translate(22px, 14px) scale(0.5);
+            opacity: 0.7;
+          }
+        
+        }
+    }
+
+    div.glossarysplit {
+      max-width: 160px;
+      margin-bottom: 0px;
+      position: relative;
+      z-index: 1;
     }
   }
-  
 }
 
-//tag indexes classes
+section.nopost {
+  text-align: center;
+}
 
-h3.tagindex {
-  text-align: right;
+// post pages (article) styles
+
+article {
+
+  margin: auto;
+  width: 90%;
+  max-width: 480px;
+
+  header {
+    display: block;
+    flex-direction: column; 
+    text-align: right;
+
+    h1 {
+      text-align: right;
+      font-weight: normal;
+      margin: auto;
+    }
+  }
+
+    main {
+
+      h1, h2, h3, ul, p {
+        margin-bottom: 40px;
+      }
+
+      ul {
+        list-style-type: square;
+      }
+
+      p {
+        text-align: justify;
+      }
+
+      img {
+        object-fit: contain;
+        max-height: 360px;
+        max-width: 360px;
+        margin-bottom: 40px;
+        //margin-top: 10px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+  }
+
+  aside {
+    text-align: right;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: right;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+}
+
+//splash page classes
+
+img.welcome {
+  width: 80%;
+  max-width: 540px;
+  margin: auto;
   margin-bottom: 20px;
-  margin-top: 0px;
-  border-bottom: 1px solid teal;
+  box-shadow: -4px 8px 8px #969696;
 }

@@ -4,24 +4,26 @@ title: long
 ---
 
 {% assign longpostsexist = 0 %}
+{% assign types = site.categories.long | map: "type" | uniq %}
 
-<div class="over">
-<ul class="index">
-
-{% for post in site.categories.long %}
-
-      <li>
-      <!--<div>{{ post.type }}&nbsp;</div>-->
-      <div><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}&nbsp;</a></div>
-      </li>
-
-      {% assign longpostsexist = 1 %}
-
+<nav class="index">
+{% for type in types %}
+      <div class="indexsplit">
+            <h2>{{ type }}</h2>
+            <ul class="index">
+                  {% for post in site.categories.long %}
+                        {% if post.type == type %}
+                              <li><a href="{{site.baseurl}}{{ post.url }}">{{ post.title }}</a></li>
+                              {% assign longpostsexist = 1 %}
+                        {% endif %}
+                  {% endfor %}
+            </ul>
+      </div>
+      <br>
+      <br>
 {% endfor %}
-  
-</ul>
-</div>
+</nav>
 
 {% if longpostsexist != 1 %}
-<div class="nopost">No posts found.</div>
+<section class="nopost">No posts found.</section>
 {% endif %}

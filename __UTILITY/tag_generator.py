@@ -11,8 +11,8 @@ No plugins required.
 import glob
 import os
 
-post_dir = '_posts/**/*'
-tag_dir = 'tag/'
+post_dir = '../_posts/**/*'
+tag_dir = '../tag/'
 
 filenames = glob.glob(post_dir + '*md', recursive=True)
 

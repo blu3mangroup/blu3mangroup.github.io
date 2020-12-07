@@ -1,0 +1,15 @@
+- create the short and long directories under _posts
+- add an assets directory, with an img folder > within this folder you can specify your own welcome image as "welcome.png" and an icon as favicon.png
+- download and run the tag_generator.py script at the root directory to generate a tags folder with tags, this has to be done each time you add new posts or tags to the site for search tag functionality to be up to date
+
+- you will need an index.html in the root to serve as welcome page
+- 
+
+index.md as opposed to index.html? I want to have the pages set specifically too, really, less flexibility and ability to add pages. it seems like rather than building a jekyll "theme" I've had my thinking oriented around building a site, since there is little decor or styling done. Maybe I could rework this later and make it into more of a robust and proper theme. for now i will just have to fork or clone.
+
+https://matthiaslischka.at/2018/12/03/github-jekyll-best-practice/
+
+
+https://www.siteleaf.com/blog/remote-themes/
+
+upstream downstream

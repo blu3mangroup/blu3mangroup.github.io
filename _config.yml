@@ -32,3 +32,6 @@ defaults:
       path: "assets/img"
     values:
       image: true
+
+exclude:
+  - __UTILITY
