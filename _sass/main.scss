@@ -35,12 +35,13 @@ body {
   }
 
   @mixin h2base {
-
+    margin-block-end: 0px;
+    margin-block-start: 0px;
     width: 100%;
     height: 100%;
     left: 0px;
-    transform-origin: -100% 1000%;
-
+    font-size: 18px;
+    transform-origin: -100px 200px;
   }
 
   h2 {
@@ -48,12 +49,11 @@ body {
     display: block;
     position: relative;
     justify-self: stretch;
-    text-align: justify;
+    text-align: left;
 
     background-color: rgba(0, 128, 128, 0.8);
     color: white;
     font-weight: normal;
-    font-size: 22px;
     text-shadow: -1px -1px 6px #3f3f3f;
     text-indent: 4px;
 
@@ -172,77 +172,82 @@ body {
 header {
   padding-left: 4px;
   padding-right: 4px;
+  margin-bottom: 4px;
   display: flex;
   position: relative;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
 
   .text {
-    display: flex;
-    margin-right: auto;
+    padding: 0px;
   }
   
   .links {
-    display: flex;
-    margin-left: auto;
+    padding-left: 10px;
+    padding-right: 0px;
+    white-space: nowrap;
   }
 }
 
 nav.header {
-
-  margin: auto;
   display: flex;
-  padding: 2px;
   position: relative;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  margin: auto;
+  width: 90%;
   max-width: 640px;
+  padding: 2px;
 
-  nav.left{
-    display: flex;
-    position: relative;
-    margin: 2px;
-    padding: 4px;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media only screen and (min-width: 640px) {
+
+    justify-content: flex-start;
+
+    a:last-child {
+      position: absolute;
+      right: 0px;
+    }
   }
-  
-  nav.right{
-    display: flex;
-    position: relative;
-    margin: 2px;
-    padding: 4px;
-    margin-left: auto;
-  }
-  
-  a.linkHeader {
-    color: teal;
+
+  @mixin headerbox {
     background-color: white;
-    font-size: 22px;
-    padding: 10px;
     text-decoration: none;
-    transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    text-align: center;
+    font-size: 100%;
+    font-weight: bold;
+    @media only screen and (min-width: 640px) {
+      font-size: 150%;
+      font-weight: normal;
+    }
+    padding: 10px;
+    margin: 4px;
+  }
+
+  a.linkHeader {
+    @include headerbox;
+    color: teal;
     outline: 1px solid white;
     outline-offset: -1px;
+
     transform: translate(-8px, 10px);
-    box-shadow: none;
+    transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
   
   a.currentHeader {
+    @include headerbox;
     color: #000;
-    background-color: white;
-    font-size: 22px;
-    text-decoration: none;
     outline: 1px solid black;
     outline-offset: -1px;
-    padding: 10px;
+    box-shadow: -7px 7px #888888;
+
     animation-name: currentfloat;
     animation-duration: 0.2s;
     animation-timing-function: linear;
     animation-fill-mode: none;
+
     transition: all 0.2s linear;
     transform: translate(-1px, 1px);
-    box-shadow: -7px 7px #888888;
   }
   
   @keyframes currentfloat {
@@ -262,28 +267,22 @@ nav.header {
   
     a.linkHeader:hover {
       color: teal;
-      background-color: white;
-      font-size: 22px;
-      padding: 10px;
-      text-decoration: none;
-      transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
       outline: 1px solid #a7a7a7;
       outline-offset: -1px;
-      transform: translate(-5px, 5px);
       box-shadow: -3px 3px #d1d1d1;
+
+      transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      transform: translate(-5px, 5px);
     }
   
     a.currentHeader:hover {
       color: #000;
-      background-color: white;
-      font-size: 22px;
-      text-decoration: none;
+      box-shadow: -4px 4px #bebebe;
       outline: 1px solid;
       outline-offset: -1px;
-      padding: 10px;
+
       transition: all 0.2s ease;
       transform: translate(-4px, 4px);
-      box-shadow: -4px 4px #bebebe;
     }
   
   }
@@ -436,53 +435,70 @@ div.indexsplit {
 }
 
 nav.glossary {
-
   margin: auto;
-  max-width: 160px;
+  max-width: 60%;
+  margin-top: 20px;
   margin-bottom: 100px;
   display: flex;
   flex-direction: column;
 
   ul {
     list-style-type: none;
-    text-align: right;
+    text-align: center;
     margin-left: 20px;
     padding: 2px;
 
     li{
-      margin-right: 0px;
+      text-align: right;
+      font-size: 150%;
     }
   }
+}
+
+div.glossarysplit {
+  max-width: 100%;
+  margin-bottom: 0px;
+  position: relative;
+  z-index: 1;
 
   @mixin h2glossary {
-    height: 36px;
-    width: 36px;
+
+    height: 48px;
+    width: 48px;
+    font-size: 200%;
     transform-origin: -100% 150%;
+  
+    @media only screen and (min-width: 640px) {
+      height: 36px;
+      width: 36px;
+      font-size: 22px;
+      transform-origin: -100% 150%;
+    }
   }
 
   h2 {
     @include h2glossary;
-
+  
     display: inline-block;
     text-align: center;
     text-indent: 0px;
-
+  
     //transform: scale(1);
-
+  
     //animation: tagidle1-mid;
     animation-direction: alternate;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-duration: 2s;
     animation-delay: -0.4s;
-
+  
     &::before {
       @include h2glossary;
       content: "";
-
+  
       display: block;
       position: absolute;
-
+  
       background-color: rgba(100, 100, 100, 0.8);
   
       transform: scale(0.9);
@@ -495,17 +511,17 @@ nav.glossary {
       animation-duration: 2s;
       animation-delay: -0.2s;
     }
-
+  
     &::after {
       @include h2glossary;
       content: " ";
-
+  
       display: block;
       position: absolute;
-
+  
       outline: 1px solid rgb(0, 0, 0);
       outline-offset: -1px;
-
+  
       top: 0px;
   
       transform: scale(0.82);
@@ -516,9 +532,9 @@ nav.glossary {
       animation-iteration-count: infinite;
       animation-duration: 2s;
     }
-
+  
     @keyframes tagidle1-heavy {
-
+  
       100% {
         transform: scale(0.95);
       }
@@ -542,44 +558,37 @@ nav.glossary {
       
     }
   }
-
 }
-
-div.glossarysplit {
-    max-width: 160px;
-    margin-bottom: 0px;
-    position: relative;
-    z-index: 1;
-}
-
-@media only screen and (min-width: 640px) {
-
-  nav.glossary {
-    margin: auto;
-    max-width: 640px;
-    margin-bottom: 100px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
-    ul {
-      list-style-type: none;
-      text-align: right;
-      white-space: nowrap;
-      margin-left: 0px;
-      margin-top: 20px;
-      padding: 2px;
   
-      li{
-        margin-right: 20px;
+@media only screen and (min-width: 640px) {
+    
+    nav.glossary {
+      max-width: 640px;
+      flex-direction: row;
+      justify-content: space-between;
+
+      ul {
+        list-style-type: none;
+        text-align: right;
+        white-space: nowrap;
+    
+        li {
+          //margin-right: 20px;
+          font-size: 100%;
+        }
       }
     }
-
-    div.lookcatcher {
-
+  
+    div.glossarysplit {
+      max-width: 160px;
+      margin-bottom: 0px;
+      position: relative;
+      z-index: 1;
+  
+      div.lookcatcher {
         position: relative;
         z-index: 1;
-    
+      
         &:hover {
     
           h2 {
@@ -650,15 +659,8 @@ div.glossarysplit {
           }
         
         }
+      }
     }
-
-    div.glossarysplit {
-      max-width: 160px;
-      margin-bottom: 0px;
-      position: relative;
-      z-index: 1;
-    }
-  }
 }
 
 section.nopost {
@@ -696,15 +698,15 @@ article {
       }
 
       p {
-        text-align: justify;
+        text-align: left;
       }
 
       img {
+        display: block;
         object-fit: contain;
         max-height: 360px;
-        max-width: 360px;
+        max-width: 80%;
         margin-bottom: 40px;
-        //margin-top: 10px;
         display: block;
         margin-left: auto;
         margin-right: auto;

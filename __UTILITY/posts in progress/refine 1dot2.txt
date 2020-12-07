@@ -60,3 +60,10 @@ https://sylhare.github.io/2020/07/03/Manage-jekyll-blog-gulp.html
 markdowncontainer? image default path for simplicity?
 
 giflossy.. https://gist.github.com/LoyEgor/e9dba0725b3ddbb8d1a68c91ca5452b5
+
+https://ankurkaushal.com/update-dependency-package-lock/
+
+Responsive Viewer
+Offered by: skmail
+
+https://www.savaslabs.com/blog/optimizing-jekyll-performance-gulp

@@ -1,7 +1,7 @@
 <header>
     <header class="text">{{ site.description }}</header>
-    <header class="right">
-      <small>[ <a href="{{site.url}}">splash</a> | <a href="http://enj0y.net">master</a> ]</small>
+    <header class="links">
+      <small>[ <a href="http://blog.enj0y.net">splash</a> | <a href="http://enj0y.net">master</a> ]</small>
     </header>
 </header>
 
@@ -9,37 +9,28 @@
 {% assign current_sub = url_array.first %}
 
 <nav class="header">
-<nav class="left">
 
-    {% if current_sub == "short" %}
-      <a href="{{site.baseurl}}/short" class="currentHeader">think hour</a>
-    {% else %}
-      <a href="{{site.baseurl}}/short" class="linkHeader">think hour</a>
-    {% endif %}
-
-</nav>
-
-<nav class="left">
-
-  {% if current_sub == "long" %}
-    <a href="{{site.baseurl}}/long" class="currentHeader">big ideas</a>
+  {% if current_sub == "short" %}
+  <a href="{{site.baseurl}}/short" class="currentHeader">think hour</a>
   {% else %}
-    <a href="{{site.baseurl}}/long" class="linkHeader">big ideas</a>
+  <a href="{{site.baseurl}}/short" class="linkHeader">think hour</a>
   {% endif %}
 
-</nav>
+  {% if current_sub == "long" %}
+  <a href="{{site.baseurl}}/long" class="currentHeader">big ideas</a>
+  {% else %}
+   <a href="{{site.baseurl}}/long" class="linkHeader">big ideas</a>
+  {% endif %}
 
-<nav class="right">
 
-    {% if current_sub == "search" %}
-    <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
-    {% elsif current_sub == "tag" %}
-    <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
-    {% else %}
-    <a href="{{site.baseurl}}/search" class="linkHeader">tag browse</a>
-    {% endif %}
+  {% if current_sub == "search" %}
+  <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
+  {% elsif current_sub == "tag" %}
+  <a href="{{site.baseurl}}/search" class="currentHeader">tag browse</a>
+  {% else %}
+  <a href="{{site.baseurl}}/search" class="linkHeader">tag browse</a>
+  {% endif %}
 
-</nav>
 </nav>
 
 <hr>

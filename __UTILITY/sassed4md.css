@@ -22,18 +22,20 @@ body {
   body h1 {
     text-align: right; }
   body h2 {
+    margin-block-end: 0px;
+    margin-block-start: 0px;
     width: 100%;
     height: 100%;
     left: 0px;
-    transform-origin: -100% 1000%;
+    font-size: 18px;
+    transform-origin: -100px 200px;
     display: block;
     position: relative;
     justify-self: stretch;
-    text-align: justify;
+    text-align: left;
     background-color: rgba(0, 128, 128, 0.8);
     color: white;
     font-weight: normal;
-    font-size: 22px;
     text-shadow: -1px -1px 6px #3f3f3f;
     text-indent: 4px;
     animation-direction: alternate;
@@ -43,10 +45,13 @@ body {
     animation-duration: 2s;
     animation-delay: -0.4s; }
     body h2::before {
+      margin-block-end: 0px;
+      margin-block-start: 0px;
       width: 100%;
       height: 100%;
       left: 0px;
-      transform-origin: -100% 1000%;
+      font-size: 18px;
+      transform-origin: -100px 200px;
       content: "";
       position: absolute;
       z-index: -1;
@@ -60,10 +65,13 @@ body {
       animation-duration: 2s;
       animation-delay: -0.2s; }
     body h2::after {
+      margin-block-end: 0px;
+      margin-block-start: 0px;
       width: 100%;
       height: 100%;
       left: 0px;
-      transform-origin: -100% 1000%;
+      font-size: 18px;
+      transform-origin: -100px 200px;
       content: "";
       position: absolute;
       z-index: -2;
@@ -96,9 +104,6 @@ body {
     border-bottom: 1px solid;
     border-image: linear-gradient(to left, teal, white) 1 1%; }
   body img {
-    object-fit: contain;
-    max-height: 480px;
-    max-width: 360px;
     margin-bottom: 10px;
     margin-top: 10px; }
   body blockquote {
@@ -118,64 +123,72 @@ body {
 header {
   padding-left: 4px;
   padding-right: 4px;
+  margin-bottom: 4px;
   display: flex;
   position: relative;
   flex-direction: row;
-  justify-content: center;
-  align-items: center; }
+  justify-content: space-between; }
   header .text {
-    display: flex;
-    margin-right: auto; }
+    padding: 0px; }
   header .links {
-    display: flex;
-    margin-left: auto; }
+    padding-left: 10px;
+    padding-right: 0px;
+    white-space: nowrap; }
 
 nav.header {
-  margin: auto;
   display: flex;
-  padding: 2px;
   position: relative;
+  margin: auto;
+  width: 90%;
+  max-width: 640px;
+  padding: 2px;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  max-width: 640px; }
-  nav.header nav.left {
-    display: flex;
-    position: relative;
-    margin: 2px;
-    padding: 4px; }
-  nav.header nav.right {
-    display: flex;
-    position: relative;
-    margin: 2px;
-    padding: 4px;
-    margin-left: auto; }
+  justify-content: space-between; }
+  @media only screen and (min-width: 640px) {
+    nav.header {
+      justify-content: flex-start; }
+      nav.header a:last-child {
+        position: absolute;
+        right: 0px; } }
   nav.header a.linkHeader {
-    color: teal;
     background-color: white;
-    font-size: 22px;
-    padding: 10px;
     text-decoration: none;
-    transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    text-align: center;
+    font-size: 100%;
+    font-weight: bold;
+    padding: 10px;
+    margin: 4px;
+    color: teal;
     outline: 1px solid white;
     outline-offset: -1px;
     transform: translate(-8px, 10px);
-    box-shadow: none; }
+    transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease; }
+    @media only screen and (min-width: 640px) {
+      nav.header a.linkHeader {
+        font-size: 150%;
+        font-weight: normal; } }
   nav.header a.currentHeader {
-    color: #000;
     background-color: white;
-    font-size: 22px;
     text-decoration: none;
+    text-align: center;
+    font-size: 100%;
+    font-weight: bold;
+    padding: 10px;
+    margin: 4px;
+    color: #000;
     outline: 1px solid black;
     outline-offset: -1px;
-    padding: 10px;
+    box-shadow: -7px 7px #888888;
     animation-name: currentfloat;
     animation-duration: 0.2s;
     animation-timing-function: linear;
     animation-fill-mode: none;
     transition: all 0.2s linear;
-    transform: translate(-1px, 1px);
-    box-shadow: -7px 7px #888888; }
+    transform: translate(-1px, 1px); }
+    @media only screen and (min-width: 640px) {
+      nav.header a.currentHeader {
+        font-size: 150%;
+        font-weight: normal; } }
 
 @keyframes currentfloat {
   from {
@@ -189,26 +202,18 @@ nav.header {
   @media only screen and (min-width: 640px) {
     nav.header a.linkHeader:hover {
       color: teal;
-      background-color: white;
-      font-size: 22px;
-      padding: 10px;
-      text-decoration: none;
-      transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
       outline: 1px solid #a7a7a7;
       outline-offset: -1px;
-      transform: translate(-5px, 5px);
-      box-shadow: -3px 3px #d1d1d1; }
+      box-shadow: -3px 3px #d1d1d1;
+      transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+      transform: translate(-5px, 5px); }
     nav.header a.currentHeader:hover {
       color: #000;
-      background-color: white;
-      font-size: 22px;
-      text-decoration: none;
+      box-shadow: -4px 4px #bebebe;
       outline: 1px solid;
       outline-offset: -1px;
-      padding: 10px;
       transition: all 0.2s ease;
-      transform: translate(-4px, 4px);
-      box-shadow: -4px 4px #bebebe; } }
+      transform: translate(-4px, 4px); } }
 
 nav.index {
   margin: auto;
@@ -304,20 +309,29 @@ div.indexsplit {
 
 nav.glossary {
   margin: auto;
-  max-width: 160px;
+  max-width: 60%;
+  margin-top: 20px;
   margin-bottom: 100px;
   display: flex;
   flex-direction: column; }
   nav.glossary ul {
     list-style-type: none;
-    text-align: right;
+    text-align: center;
     margin-left: 20px;
     padding: 2px; }
     nav.glossary ul li {
-      margin-right: 0px; }
-  nav.glossary h2 {
-    height: 36px;
-    width: 36px;
+      text-align: right;
+      font-size: 150%; }
+
+div.glossarysplit {
+  max-width: 100%;
+  margin-bottom: 0px;
+  position: relative;
+  z-index: 1; }
+  div.glossarysplit h2 {
+    height: 48px;
+    width: 48px;
+    font-size: 200%;
     transform-origin: -100% 150%;
     display: inline-block;
     text-align: center;
@@ -327,9 +341,16 @@ nav.glossary {
     animation-iteration-count: infinite;
     animation-duration: 2s;
     animation-delay: -0.4s; }
-    nav.glossary h2::before {
-      height: 36px;
-      width: 36px;
+    @media only screen and (min-width: 640px) {
+      div.glossarysplit h2 {
+        height: 36px;
+        width: 36px;
+        font-size: 22px;
+        transform-origin: -100% 150%; } }
+    div.glossarysplit h2::before {
+      height: 48px;
+      width: 48px;
+      font-size: 200%;
       transform-origin: -100% 150%;
       content: "";
       display: block;
@@ -343,9 +364,16 @@ nav.glossary {
       animation-iteration-count: infinite;
       animation-duration: 2s;
       animation-delay: -0.2s; }
-    nav.glossary h2::after {
-      height: 36px;
-      width: 36px;
+      @media only screen and (min-width: 640px) {
+        div.glossarysplit h2::before {
+          height: 36px;
+          width: 36px;
+          font-size: 22px;
+          transform-origin: -100% 150%; } }
+    div.glossarysplit h2::after {
+      height: 48px;
+      width: 48px;
+      font-size: 200%;
       transform-origin: -100% 150%;
       content: " ";
       display: block;
@@ -359,6 +387,12 @@ nav.glossary {
       animation-direction: alternate;
       animation-iteration-count: infinite;
       animation-duration: 2s; }
+      @media only screen and (min-width: 640px) {
+        div.glossarysplit h2::after {
+          height: 36px;
+          width: 36px;
+          font-size: 22px;
+          transform-origin: -100% 150%; } }
 
 @keyframes tagidle1-heavy {
   100% {
@@ -374,46 +408,39 @@ nav.glossary {
     transform: scale(0.75);
     opacity: 0.5; } }
 
-div.glossarysplit {
-  max-width: 160px;
-  margin-bottom: 0px;
-  position: relative;
-  z-index: 1; }
-
 @media only screen and (min-width: 640px) {
   nav.glossary {
-    margin: auto;
     max-width: 640px;
-    margin-bottom: 100px;
-    display: flex;
     flex-direction: row;
     justify-content: space-between; }
     nav.glossary ul {
       list-style-type: none;
       text-align: right;
-      white-space: nowrap;
-      margin-left: 0px;
-      margin-top: 20px;
-      padding: 2px; }
+      white-space: nowrap; }
       nav.glossary ul li {
-        margin-right: 20px; }
-    nav.glossary div.lookcatcher {
+        font-size: 100%; }
+  div.glossarysplit {
+    max-width: 160px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 1; }
+    div.glossarysplit div.lookcatcher {
       position: relative;
       z-index: 1; }
-      nav.glossary div.lookcatcher:hover h2 {
+      div.glossarysplit div.lookcatcher:hover h2 {
         animation-direction: normal;
         animation-timing-function: ease;
         animation-fill-mode: both;
         animation-iteration-count: 1;
         animation-duration: 0.4s; }
-      nav.glossary div.lookcatcher:hover h2::before {
+      div.glossarysplit div.lookcatcher:hover h2::before {
         animation: tagzoom2;
         animation-direction: normal;
         animation-timing-function: ease;
         animation-fill-mode: both;
         animation-iteration-count: 1;
         animation-duration: 0.4s; }
-      nav.glossary div.lookcatcher:hover h2::after {
+      div.glossarysplit div.lookcatcher:hover h2::after {
         animation: tagzoom3;
         animation-direction: normal;
         animation-timing-function: ease;
@@ -438,12 +465,7 @@ div.glossarysplit {
       opacity: 0.5; }
     100% {
       transform: translate(22px, 14px) scale(0.5);
-      opacity: 0.7; } }
-    nav.glossary div.glossarysplit {
-      max-width: 160px;
-      margin-bottom: 0px;
-      position: relative;
-      z-index: 1; } }
+      opacity: 0.7; } } }
 
 section.nopost {
   text-align: center; }
@@ -465,8 +487,13 @@ article {
   article main ul {
     list-style-type: square; }
   article main p {
-    text-align: justify; }
+    text-align: left; }
   article main img {
+    display: block;
+    object-fit: contain;
+    max-height: 360px;
+    max-width: 80%;
+    margin-bottom: 40px;
     display: block;
     margin-left: auto;
     margin-right: auto; }

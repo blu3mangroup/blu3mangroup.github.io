@@ -8,37 +8,49 @@ const path = require('path');
 const gutil = require('gulp-util');
 const rename = require('gulp-rename');
 const del = require('del');
+const fs = require('fs')
+
 //const jekyll = process.platform ==="win32" ? "jekyll.bat" : "jekyll";
 //const bundle = process.platform ==="win32" ? "bundle.bat" : "bundle";
 
-//image checking function and possibly more to scale the default gulper
-
-function imageresize() {
+gulp.task('imageresize', function(cb) {
 
     let settings = { width: '360px' };
+    const imagefiles = '_imgstage/*.{png,jpg,jpeg,webp}';
+    
+    if (fs.existsSync(imagefiles)) {
+        return gulp.src(imagefiles)
+            .pipe(responsive({
+                '**/*.*': settings,
+                '*.*': settings,
+            }))
+            .pipe(gulp.dest('_imgstage'));
+    } 
+    else {
+        console.log('No images in staging folder to resize.')
+    }
+    cb();
 
-    return gulp.src('_imgstage/*.{png,jpg,jpeg,webp}')
-        .pipe(responsive({
-            '**/*.*': settings,
-            '*.*': settings,
-        }))
-        .pipe(gulp.dest('_imgstage'));
-}
+});
 
-function imagecompress() {
+gulp.task('imagecompressclear', function(cb) {
 
-    return gulp.src('_imgstage/*.{png,svg,jpg,webp,jpeg,gif}')
-        .pipe(imagemin({verbose: true}))
-        .pipe(gulp.dest('../assets/img'));
-}
+    const imagefiles = '_imgstage/*.{png,svg,jpg,webp,jpeg,gif}';
 
-function imageclear(cb) {
+    if (fs.existsSync(imagefiles)) {
+        return gulp.src(imagefiles)
+            .pipe(imagemin({verbose: true}))
+            .pipe(gulp.dest('../assets/img'))
+            .del(['_imgstage/**', '!_imgstage']);
+    }
+    else {
+        console.log('No images in staging folder to compress.')
+    }
+    cb();
+    
+});
 
-    return del(['_imgstage/**', '!_imgstage']);
-
-}
-
-function sassed4md(cb) {
+gulp.task('sassed4md', function(cb) {
 
     gulp.src('../_sass/main.scss')
     .pipe(sass())
@@ -46,9 +58,9 @@ function sassed4md(cb) {
     .pipe(gulp.dest('./'));
 
     cb();
-}
+});
 
-function tags(cb) {
+gulp.task('tags', function(cb) {
     
     const tagGen = spawn('python3', [ 'tag_generator.py' ]);
 
@@ -62,9 +74,9 @@ function tags(cb) {
     tagGen.stderr.on('data', tagGenLogger);
 
     cb();
-}
+});
 
-function build(cb) {
+gulp.task('build', function(cb) {
     
     const parentDirectory = path.resolve(process.cwd(), '..');
 
@@ -80,6 +92,6 @@ function build(cb) {
     runjekyll.stderr.on('data', jekyllLogger);
 
     cb();
-}
+});
 
-exports.default = gulp.series(imageresize, imagecompress, imageclear, sassed4md, tags, build);
+gulp.task('default', gulp.series('imageresize', 'imagecompressclear', 'sassed4md', 'tags', 'build'));
