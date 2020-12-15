@@ -67,3 +67,5 @@ Responsive Viewer
 Offered by: skmail
 
 https://www.savaslabs.com/blog/optimizing-jekyll-performance-gulp
+
+https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/#toggling-themes

@@ -1,33 +1,75 @@
 //global formatting and defaults
 
+:root {
+
+  --text-color-h: 0;
+  --text-color-s: 0%;
+  --text-color-l: 0%;
+  --text-color-hsl: var(--text-color-h), var(--text-color-s), var(--text-color-l);
+
+  --highlight-color-h: 191.11;
+  --highlight-color-s: 87.71%;
+  --highlight-color-l: 35.1%;
+  --highlight-color-hsl: var(--highlight-color-h), var(--highlight-color-s), var(--highlight-color-l);
+
+  --shadow-color-h: 0;
+  --shadow-color-s: 0%;
+  --shadow-color-l: 50%;
+  --shadow-color-hsl: var(--shadow-color-h), var(--shadow-color-s), var(--shadow-color-l);
+
+  --bg-color-h: 0;
+  --bg-color-s: 0%;
+  --bg-color-l: 100%;
+  --bg-color-hsl: var(--bg-color-h), var(--bg-color-s), var(--bg-color-l);
+
+  --image-filter: none;
+
+  &.dark {
+
+    --text-color-l: 80%;
+
+    --highlight-color-h: 193.99;
+    --highlight-color-s: 85.78%;
+    --highlight-color-l: 44.12%;
+
+    --shadow-color-l: 30%;
+
+    --bg-color-l: 10%;
+
+    --image-filter: grayscale(20%);
+  }
+  
+}
+
 body {
   font-family: Verdana, sans-serif, "Times New Roman";
-  color: black;
+  color: hsl(var(--text-color-hsl));
   letter-spacing: 0px;
   word-spacing: 2px;
   font-size: 14px;
   overflow-y: scroll;
-  background-color: white;
+  background-color: hsl(var(--bg-color-hsl));
 
+  a,
   a:link {
     text-decoration: none;
-    color: teal;
+    color: hsl(var(--highlight-color-hsl));
   }
 
   a:visited {
     text-decoration: none;
-    color: teal;
+    color: hsl(var(--highlight-color-hsl));
   }
 
   a:hover {
     text-decoration: none;
-    color: white;
-    background-color: #999;
+    color: hsl(var(--bg-color-hsl));
+    background-color: hsl(var(--shadow-color-hsl));
   }
 
   a:active {
     text-decoration: none;
-    color: teal;
+    color: hsl(var(--highlight-color-hsl));
   }
 
   h1 {
@@ -51,10 +93,10 @@ body {
     justify-self: stretch;
     text-align: left;
 
-    background-color: rgba(0, 128, 128, 0.8);
-    color: white;
+    background-color: hsla(var(--highlight-color-hsl), 0.8);
+    color: hsl(var(--bg-color-hsl));
     font-weight: normal;
-    text-shadow: -1px -1px 6px #3f3f3f;
+    text-shadow: -1px -1px 6px hsl(var(--shadow-color-hsl));
     text-indent: 4px;
 
     //transform: scale(1);
@@ -73,10 +115,8 @@ body {
       content: "";
       position: absolute;
       z-index: -1;
-      
-      //outline: 20px solid rgba(100, 100, 100, 0.8);
-      //outline-offset: -20px;
-      background-color: rgba(100, 100, 100, 0.8);
+
+      background-color: hsla(var(--shadow-color-hsl), 0.8);
 
       transform: scale(0.98);
       opacity: 0.95;
@@ -95,7 +135,7 @@ body {
       position: absolute;
       z-index: -2;
 
-      outline: 1px solid rgb(0, 0, 0);
+      outline: 1px solid hsl(var(--text-color-hsl));
       outline-offset: -1px;
 
       top: 0px;
@@ -109,57 +149,55 @@ body {
     }
 
     @keyframes tagidle1-light {
-  
       100% {
         transform: scale(0.99);
         opacity: 1;
       }
-    
     }
-      
+
     @keyframes tagidle2-light {
-      
-        100% {
-          transform: scale(0.96);
-          opacity: 0.8;
-        }
-      
+      100% {
+        transform: scale(0.96);
+        opacity: 0.8;
+      }
     }
-      
+
     @keyframes tagidle3-light {
-      
-        100% {
-          transform: scale(0.92);
-          opacity: 0.5;
-        }
-      
+      100% {
+        transform: scale(0.92);
+        opacity: 0.5;
+      }
     }
   }
 
   h3 {
     text-align: right;
     border-bottom: 1px solid;
-    border-image: linear-gradient(to left, teal, white) 1 1%;
+    border-image: linear-gradient(to left, hsl(var(--highlight-color-hsl)), hsl(var(--bg-color-hsl))) 1 1%;
   }
 
   img {
     margin-bottom: 10px;
     margin-top: 10px;
+
+    &:not([src*=".svg"]) {
+      filter: var(--image-filter);
+    }
   }
 
   blockquote {
-  border-left: 5px solid teal;
-  color: rgb(101, 173, 173);
-  padding: 0px 20px;
+    border-left: 5px solid hsl(var(--highlight-color-hsl));
+    color: hsla(var(--highlight-color-hsl), 0.6);
+    padding: 0px 20px;
   }
 
   a img {
-      display: block;
-      margin: 0 auto;
-      margin-bottom: 10px;
-      margin-top: 10px;
-      background-color: none;
-      color: none;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    background-color: none;
+    color: none;
   }
 
   small {
@@ -181,11 +219,20 @@ header {
   .text {
     padding: 0px;
   }
-  
+
   .links {
-    padding-left: 10px;
+    padding-left: 16px;
     padding-right: 0px;
+    display: flex;
     white-space: nowrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: right;
+    @media only screen and (min-width: 640px) {
+      align-content: flex-start;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 }
 
@@ -201,7 +248,6 @@ nav.header {
   justify-content: space-between;
 
   @media only screen and (min-width: 640px) {
-
     justify-content: flex-start;
 
     a:last-child {
@@ -211,7 +257,7 @@ nav.header {
   }
 
   @mixin headerbox {
-    background-color: white;
+    background-color: hsl(var(--bg-color-hsl));
     text-decoration: none;
     text-align: center;
     font-size: 100%;
@@ -226,20 +272,20 @@ nav.header {
 
   a.linkHeader {
     @include headerbox;
-    color: teal;
-    outline: 1px solid white;
+    color: hsl(var(--highlight-color-hsl));
+    outline: 1px solid hsl(var(--bg-color-hsl));
     outline-offset: -1px;
 
     transform: translate(-8px, 10px);
     transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   }
-  
+
   a.currentHeader {
     @include headerbox;
-    color: #000;
-    outline: 1px solid black;
+    color: hsl(var(--text-color-hsl));
+    outline: 1px solid hsl(var(--text-color-hsl));
     outline-offset: -1px;
-    box-shadow: -7px 7px #888888;
+    box-shadow: -7px 7px hsl(var(--shadow-color-hsl));
 
     animation-name: currentfloat;
     animation-duration: 0.2s;
@@ -249,54 +295,51 @@ nav.header {
     transition: all 0.2s linear;
     transform: translate(-1px, 1px);
   }
-  
+
   @keyframes currentfloat {
     from {
       transform: translate(-4px, 5px);
-      box-shadow: -4px 4px #bebebe;
-      outline: 1px solid gray;
+      box-shadow: -4px 4px hsla(var(--shadow-color-hsl), 0.4);
+      outline: 1px solid hsla(var(--shadow-color-hsl));
     }
     to {
       transform: translate(-1px, 1px);
       box-shadow: -7px 7px #888888;
-      outline: 1px solid black;
+      outline: 1px solid hsl(var(--text-color-hsl));
     }
   }
-  
+
   @media only screen and (min-width: 640px) {
-  
     a.linkHeader:hover {
-      color: teal;
-      outline: 1px solid #a7a7a7;
+      color: hsl(var(--highlight-color-hsl));
+      outline: 1px solid hsla(var(--shadow-color-hsl), 0.6);
       outline-offset: -1px;
-      box-shadow: -3px 3px #d1d1d1;
+      box-shadow: -3px 3px hsla(var(--shadow-color-hsl), 0.4);
 
       transition: outline 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
       transform: translate(-5px, 5px);
     }
-  
+
     a.currentHeader:hover {
-      color: #000;
-      box-shadow: -4px 4px #bebebe;
+      color: hsl(var(--text-color-hsl));
+      box-shadow: -4px 4px hsla(var(--shadow-color-hsl), 0.4);
       outline: 1px solid;
       outline-offset: -1px;
 
       transition: all 0.2s ease;
       transform: translate(-4px, 4px);
     }
-  
   }
 }
 
 // index pages (short, long, tags and tag-specific) classes
 
 nav.index {
-
   margin: auto;
   width: 90%;
   max-width: 480px;
 
-  h1{
+  h1 {
     text-align: center;
   }
 
@@ -305,7 +348,6 @@ nav.index {
   }
 
   ul {
-
     list-style-type: none;
     margin: auto;
     text-align: center;
@@ -313,12 +355,10 @@ nav.index {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-
   }
 }
 
 div.indexsplit {
-
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -330,7 +370,7 @@ div.indexsplit {
 
   h2 {
     @include h2index;
-    
+
     height: auto;
     width: auto;
     text-align: left;
@@ -360,11 +400,11 @@ div.indexsplit {
       top: 0px;
       left: 0px;
 
-      background-color: rgba(100, 100, 100, 0.8);
-  
+      background-color: hsla(var(--shadow-color-hsl), 0.8);
+
       transform: scale(0.9);
       opacity: 0.95;
-      
+
       animation: tagidle2-mid;
       animation-direction: alternate;
       animation-timing-function: linear;
@@ -381,15 +421,15 @@ div.indexsplit {
       height: 100%;
       width: 100%;
 
-      outline: 1px solid rgb(0, 0, 0);
+      outline: 1px solid hsl(var(--text-color-hsl));
       outline-offset: -1px;
 
       top: 0px;
       left: 0px;
-  
+
       transform: scale(0.82);
       opacity: 0.7;
-  
+
       animation: tagidle3-mid;
       animation-direction: alternate;
       animation-iteration-count: infinite;
@@ -397,28 +437,23 @@ div.indexsplit {
     }
 
     @keyframes tagidle1-mid {
-
       100% {
         transform: scale(0.95);
       }
     }
-    
+
     @keyframes tagidle2-mid {
-      
-        100% {
-          transform: scale(0.84);
-          opacity: 0.8;
-        }
-      
+      100% {
+        transform: scale(0.84);
+        opacity: 0.8;
+      }
     }
-      
+
     @keyframes tagidle3-mid {
-      
-        100% {
-          transform: scale(0.75);
-          opacity: 0.5;
-        }
-      
+      100% {
+        transform: scale(0.75);
+        opacity: 0.5;
+      }
     }
   }
 
@@ -429,7 +464,7 @@ div.indexsplit {
 
   ul.index > li {
     border-bottom: 1px dotted;
-    border-image: linear-gradient(to left, gray, white) 1 1%;
+    border-image: linear-gradient(to left, hsl(var(--shadow-color-hsl)), hsl(var(--bg-color-hsl))) 1 1%;
     margin-bottom: 4px;
   }
 }
@@ -448,7 +483,7 @@ nav.glossary {
     margin-left: 20px;
     padding: 2px;
 
-    li{
+    li {
       text-align: right;
       font-size: 150%;
     }
@@ -462,12 +497,11 @@ div.glossarysplit {
   z-index: 1;
 
   @mixin h2glossary {
-
     height: 48px;
     width: 48px;
     font-size: 200%;
     transform-origin: -100% 150%;
-  
+
     @media only screen and (min-width: 640px) {
       height: 36px;
       width: 36px;
@@ -478,32 +512,32 @@ div.glossarysplit {
 
   h2 {
     @include h2glossary;
-  
+
     display: inline-block;
     text-align: center;
     text-indent: 0px;
-  
+
     //transform: scale(1);
-  
+
     //animation: tagidle1-mid;
     animation-direction: alternate;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-duration: 2s;
     animation-delay: -0.4s;
-  
+
     &::before {
       @include h2glossary;
       content: "";
-  
+
       display: block;
       position: absolute;
-  
-      background-color: rgba(100, 100, 100, 0.8);
-  
+
+      background-color: hsla(var(--shadow-color-hsl), 0.8);
+
       transform: scale(0.9);
       opacity: 0.95;
-      
+
       animation: tagidle2-heavy;
       animation-direction: alternate;
       animation-timing-function: linear;
@@ -511,156 +545,142 @@ div.glossarysplit {
       animation-duration: 2s;
       animation-delay: -0.2s;
     }
-  
+
     &::after {
       @include h2glossary;
       content: " ";
-  
+
       display: block;
       position: absolute;
-  
-      outline: 1px solid rgb(0, 0, 0);
+
+      outline: 1px solid hsl(var(--text-color-hsl));
       outline-offset: -1px;
-  
+
       top: 0px;
-  
+
       transform: scale(0.82);
       opacity: 0.7;
-  
+
       animation: tagidle3-heavy;
       animation-direction: alternate;
       animation-iteration-count: infinite;
       animation-duration: 2s;
     }
-  
+
     @keyframes tagidle1-heavy {
-  
       100% {
         transform: scale(0.95);
       }
     }
-    
+
     @keyframes tagidle2-heavy {
-      
-        100% {
-          transform: scale(0.84);
-          opacity: 0.8;
-        }
-      
+      100% {
+        transform: scale(0.84);
+        opacity: 0.8;
+      }
     }
-      
+
     @keyframes tagidle3-heavy {
-      
-        100% {
-          transform: scale(0.75);
-          opacity: 0.5;
-        }
-      
+      100% {
+        transform: scale(0.75);
+        opacity: 0.5;
+      }
     }
   }
 }
-  
-@media only screen and (min-width: 640px) {
-    
-    nav.glossary {
-      max-width: 640px;
-      flex-direction: row;
-      justify-content: space-between;
 
-      ul {
-        list-style-type: none;
-        text-align: right;
-        white-space: nowrap;
-    
-        li {
-          //margin-right: 20px;
-          font-size: 100%;
-        }
+@media only screen and (min-width: 640px) {
+  nav.glossary {
+    max-width: 640px;
+    flex-direction: row;
+    justify-content: space-between;
+
+    ul {
+      list-style-type: none;
+      text-align: right;
+      white-space: nowrap;
+
+      li {
+        //margin-right: 20px;
+        font-size: 100%;
       }
     }
-  
-    div.glossarysplit {
-      max-width: 160px;
-      margin-bottom: 0px;
+  }
+
+  div.glossarysplit {
+    max-width: 160px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 1;
+
+    div.lookcatcher {
       position: relative;
       z-index: 1;
-  
-      div.lookcatcher {
-        position: relative;
-        z-index: 1;
-      
-        &:hover {
-    
-          h2 {
-            //animation: tagzoom1;
-            animation-direction: normal;
-            animation-timing-function: ease;
-            animation-fill-mode: both;
-            animation-iteration-count: 1;
-            animation-duration: 0.4s;
-          }
-    
-          h2::before {
-            animation: tagzoom2;
-            animation-direction: normal;
-            animation-timing-function: ease;
-            animation-fill-mode: both;
-            animation-iteration-count: 1;
-            animation-duration: 0.4s;
-          }
-    
-          h2::after {
-            animation: tagzoom3;
-            animation-direction: normal;
-            animation-timing-function: ease;
-            animation-fill-mode: both;
-            animation-iteration-count: 1;
-            animation-duration: 0.4s;
-          }         
+
+      &:hover {
+        h2 {
+          //animation: tagzoom1;
+          animation-direction: normal;
+          animation-timing-function: ease;
+          animation-fill-mode: both;
+          animation-iteration-count: 1;
+          animation-duration: 0.4s;
         }
 
-        @keyframes tagzoom1 {
+        h2::before {
+          animation: tagzoom2;
+          animation-direction: normal;
+          animation-timing-function: ease;
+          animation-fill-mode: both;
+          animation-iteration-count: 1;
+          animation-duration: 0.4s;
+        }
 
-          0% {
-            transform: scale(0.95);
-          }
-        
-          100% {
-            transform: translate(-16px, -2px) scale(1);
-      
-          }
-        
+        h2::after {
+          animation: tagzoom3;
+          animation-direction: normal;
+          animation-timing-function: ease;
+          animation-fill-mode: both;
+          animation-iteration-count: 1;
+          animation-duration: 0.4s;
         }
-      
-        @keyframes tagzoom2 {
-      
-          0% {
-            transform: scale(0.84);
-            opacity: 0.8;
-          }
-        
-          100% {
-            transform: translate(-2px, 6px) scale(0.7);
-            opacity: 0.95;
-          }
-        
+      }
+
+      @keyframes tagzoom1 {
+        0% {
+          transform: scale(0.95);
         }
-      
-        @keyframes tagzoom3 {
-      
-          0% {
-            transform: scale(0.75);
-            opacity: 0.5;
-          }
-        
-          100% {
-            transform: translate(22px, 14px) scale(0.5);
-            opacity: 0.7;
-          }
-        
+
+        100% {
+          transform: translate(-16px, -2px) scale(1);
+        }
+      }
+
+      @keyframes tagzoom2 {
+        0% {
+          transform: scale(0.84);
+          opacity: 0.8;
+        }
+
+        100% {
+          transform: translate(-2px, 6px) scale(0.7);
+          opacity: 0.95;
+        }
+      }
+
+      @keyframes tagzoom3 {
+        0% {
+          transform: scale(0.75);
+          opacity: 0.5;
+        }
+
+        100% {
+          transform: translate(22px, 14px) scale(0.5);
+          opacity: 0.7;
         }
       }
     }
+  }
 }
 
 section.nopost {
@@ -670,14 +690,13 @@ section.nopost {
 // post pages (article) styles
 
 article {
-
   margin: auto;
   width: 90%;
   max-width: 480px;
 
   header {
     display: block;
-    flex-direction: column; 
+    flex-direction: column;
     text-align: right;
 
     h1 {
@@ -687,31 +706,33 @@ article {
     }
   }
 
-    main {
+  main {
+    h1,
+    h2,
+    h3,
+    ul,
+    p {
+      margin-bottom: 40px;
+    }
 
-      h1, h2, h3, ul, p {
-        margin-bottom: 40px;
-      }
+    ul {
+      list-style-type: square;
+    }
 
-      ul {
-        list-style-type: square;
-      }
+    p {
+      text-align: justify;
+    }
 
-      p {
-        text-align: left;
-      }
-
-      img {
-        display: block;
-        object-fit: contain;
-        max-height: 360px;
-        max-width: 80%;
-        margin-bottom: 40px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
+    img {
+      display: block;
+      object-fit: contain;
+      max-height: 360px;
+      max-width: 80%;
+      margin-bottom: 40px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   aside {
@@ -720,21 +741,21 @@ article {
 
   nav {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     flex-wrap: wrap;
     justify-content: right;
     margin-top: 20px;
     margin-bottom: 10px;
   }
-
 }
 
 //splash page classes
 
-img.welcome {
+img#welcome {
   width: 80%;
   max-width: 540px;
   margin: auto;
   margin-bottom: 20px;
-  box-shadow: -4px 8px 8px #969696;
+  box-shadow: -4px 8px 8px hsl(var(--shadow-color-hsl));
 }
+

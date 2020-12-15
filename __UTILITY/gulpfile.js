@@ -1,7 +1,8 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const responsive = require('gulp-responsive')
-const sass = require('gulp-sass');
+//const sass = require('gulp-sass');
+const sass = require('gulp-ruby-sass');
 //const child = require('child_process');
 const spawn = require('cross-spawn');
 const path = require('path');
@@ -13,47 +14,40 @@ const fs = require('fs')
 //const jekyll = process.platform ==="win32" ? "jekyll.bat" : "jekyll";
 //const bundle = process.platform ==="win32" ? "bundle.bat" : "bundle";
 
-gulp.task('imageresize', function(cb) {
+gulp.task('imageresize', function() {
 
     let settings = { width: '360px' };
-    const imagefiles = '_imgstage/*.{png,jpg,jpeg,webp}';
-    
-    if (fs.existsSync(imagefiles)) {
-        return gulp.src(imagefiles)
-            .pipe(responsive({
-                '**/*.*': settings,
-                '*.*': settings,
-            }))
-            .pipe(gulp.dest('_imgstage'));
-    } 
-    else {
-        console.log('No images in staging folder to resize.')
-    }
-    cb();
+
+    return gulp.src('_imgstage/*.{png,jpg,jpeg,webp}')
+        .pipe(responsive({
+            '**/*.*': settings
+        },
+        {
+          quality: 70,
+          progressive: true,
+          withMetadata: false,
+          stats: true,
+          errorOnUnusedConfig: false,
+          errorOnUnusedImage: false,
+          passThroughUnused: true,
+          errorOnEnlargement: false,
+        }
+        ))
+        .pipe(gulp.dest('_imgstage'));
 
 });
 
-gulp.task('imagecompressclear', function(cb) {
+gulp.task('imagecompressclear', function() {
+//gifs destroy this crap and it seriously needs to backup and clear, and pass on even uncompressed images. come on
+    return gulp.src('_imgstage/*.{png,svg,jpg,webp,jpeg}')
+        .pipe(imagemin({verbose: true}))
+        .pipe(gulp.dest('../assets/img'));
 
-    const imagefiles = '_imgstage/*.{png,svg,jpg,webp,jpeg,gif}';
-
-    if (fs.existsSync(imagefiles)) {
-        return gulp.src(imagefiles)
-            .pipe(imagemin({verbose: true}))
-            .pipe(gulp.dest('../assets/img'))
-            .del(['_imgstage/**', '!_imgstage']);
-    }
-    else {
-        console.log('No images in staging folder to compress.')
-    }
-    cb();
-    
 });
 
 gulp.task('sassed4md', function(cb) {
 
-    gulp.src('../_sass/main.scss')
-    .pipe(sass())
+    sass('../_sass/main.scss')
     .pipe(rename('sassed4md.css'))
     .pipe(gulp.dest('./'));
 

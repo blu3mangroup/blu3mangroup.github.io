@@ -3,8 +3,47 @@ layout: default
 title: landing
 ---
 
+<script>
+
+window.onload = function () {
+
+    const welcomer = document.getElementById("welcome");
+    var cache = document.createElement("CACHE");
+    cache.style = "position:absolute;z-index:-1000;opacity:0;";
+    document.body.appendChild(cache);
+    var numsav = 0;
+
+    for (var i=1; i<10; i++) {
+        var img = new Image();
+        img.src = `/assets/img/Welcome${(i)}.png`;
+        img.style = "position:absolute";
+        cache.appendChild(img);
+    }
+
+    function welcomeRoll(max) {
+        var num = Math.floor(Math.random() * Math.floor(max) + 1);
+
+        if (numsav === num) {
+            if (num === 9) {
+                num = (num -2)
+            }
+            num = (num + 1)
+        }
+        
+        numsav = num;
+        return num;
+    }
+
+    setInterval(function (){
+        welcomer.setAttribute('src', `/assets/img/Welcome${welcomeRoll(9)}.png`);
+    }, 100);
+}
+
+
+</script>
+
 <div style="text-align: center;">
-    <img class="welcome" src=/assets/img/Welcome.png>
+    <img id="welcome" src=/assets/img/Welcome.png>
     <br>
     <small>This WebLog is beautifuler on a modern desktop browser.</small>
 </div>
