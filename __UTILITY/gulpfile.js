@@ -74,7 +74,11 @@ gulp.task('build', function(cb) {
     
     const parentDirectory = path.resolve(process.cwd(), '..');
 
-    const runjekyll = spawn('bundle exec jekyll', ['serve', '--watch', '--incremental'], {cwd: parentDirectory});
+    const runjekyll = spawn(
+        'bundle exec jekyll',
+        ['serve', '--watch', '--incremental'],
+        {cwd: parentDirectory, shell: true}
+        );
 
     const jekyllLogger = (buffer) => {
         buffer.toString()

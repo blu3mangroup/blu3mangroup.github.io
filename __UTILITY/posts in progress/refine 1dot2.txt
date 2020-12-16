@@ -1,5 +1,8 @@
 un fucking real.
 
+https://github.com/imagemin/mozjpeg-bin/issues/47
+https://github.com/imagemin/optipng-bin/issues/84 npm rebuild
+
 semantics, cool
 editing some smalltext links into the header
 
