@@ -13,10 +13,6 @@ title: short
     {% assign date_month = post.date | date: "%b" %}
     {% assign date_year = post.date | date: "%Y" %}
 
-<!--{% if forloop.first == true %}
-    <h1>{{ date_year }}</h1>
-{% endif %}-->
-
 {% unless forloop.first == true %}
 {% unless forloop.last == true %}
     {% unless date_month == latest_month %}
@@ -25,15 +21,8 @@ title: short
 {% endunless %}
 {% endunless %}
 
-<!--{% unless forloop.first == true %}
-    {% unless date_year == latest_year %}
-    <h3>{{ date_year }}</h3>
-    {% endunless %}
-{% endunless %}-->
-
     <li>
     <div ><a href="{{site.baseurl}}{{ post.url }}">{{ date_print | strip_newlines }}</a>&nbsp;</div>
-   <!-- <div><a href="{{site.baseurl}}{{ post.url }}">{{ post.content | strip_html | truncate: 40 | strip }}&nbsp;</a></div> -->
     </li>
 
     {% assign latest_month = post.date | date: "%b" %}

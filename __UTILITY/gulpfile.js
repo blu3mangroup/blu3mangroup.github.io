@@ -14,35 +14,43 @@ const fs = require('fs')
 //const jekyll = process.platform ==="win32" ? "jekyll.bat" : "jekyll";
 //const bundle = process.platform ==="win32" ? "bundle.bat" : "bundle";
 
+gulp.task('imagebup', function() {
+    return gulp.src('_imgstage/*')
+    .pipe(gulp.dest('_imgstagebackup'));
+});
+
 gulp.task('imageresize', function() {
 
-    let settings = { width: '360px' };
+    let settings = { width: '360px', flatten: 'true' };
 
     return gulp.src('_imgstage/*.{png,jpg,jpeg,webp}')
         .pipe(responsive({
             '**/*.*': settings
         },
         {
-          quality: 70,
+          quality: 80,
           progressive: true,
           withMetadata: false,
           stats: true,
           errorOnUnusedConfig: false,
           errorOnUnusedImage: false,
           passThroughUnused: true,
-          errorOnEnlargement: false,
+          errorOnEnlargement: false
         }
         ))
         .pipe(gulp.dest('_imgstage'));
 
 });
 
-gulp.task('imagecompressclear', function() {
+gulp.task('imagecompress', function() {
 //gifs destroy this crap and it seriously needs to backup and clear, and pass on even uncompressed images. come on
     return gulp.src('_imgstage/*.{png,svg,jpg,webp,jpeg}')
         .pipe(imagemin({verbose: true}))
         .pipe(gulp.dest('../assets/img'));
+});
 
+gulp.task('clean', function() {
+    return del(['_imgstage/*', '!_imgstage']);
 });
 
 gulp.task('sassed4md', function(cb) {
@@ -92,4 +100,4 @@ gulp.task('build', function(cb) {
     cb();
 });
 
-gulp.task('default', gulp.series('imageresize', 'imagecompressclear', 'sassed4md', 'tags', 'build'));
+gulp.task('default', gulp.series('imagebup', 'imageresize', 'imagecompress', 'clean', 'sassed4md', 'tags', 'build'));
