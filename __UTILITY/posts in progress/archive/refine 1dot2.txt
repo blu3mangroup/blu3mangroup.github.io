@@ -1,0 +1,74 @@
+un fucking real.
+
+https://github.com/imagemin/mozjpeg-bin/issues/47
+https://github.com/imagemin/optipng-bin/issues/84 npm rebuild
+
+semantics, cool
+editing some smalltext links into the header
+
+animations for tag index page troubles:
+
+z-order, or z-index. stacking order as it pertains to pseudo-elements, a foolish decision to rely on. attempting to create a faux 3d style, while actively eschewing 3d transforms, and then finally coming to attempt to use a hacky fix that incorporates them (z-3d style, z transform 1px)
+
+pseudo elements. hid the main element anyway, might as well have gone full bore and just thrown in whatever i felt like into the DOM
+
+also, sass variables, using sass. i want to animate with this, colour function, variable, random number etc.
+
+what else? MDN IE, css standards for animations. using them on a phone?? using pseudo elements sucks dude haha
+_______________
+
+I give up. the animations I want to perform are too advanced to be accomplished in CSS. The reliance on robust start and end states, and my added pseudoelement fuckery is proving to make things a little too hard to achieve smooth animation. You have to understand, I want my blog stripped back and to work with the least extension, simply put to work based on html and css - though of course utilizing modern advancements in these that are not fully backwards compatible with old browsers. This obsession is ridiculous, I don't think anyone except me really reads this blog, I'm not an advanced scripting person or coding person anyway and should just enjoy using javascript and other combinations of scripts to make things easier and more learning for me. This must be what OCD feels like, a burning frustration over absolutely nothing. I'm seriously getting angry right now facing this microscopic crossroads, and the fact it even exists. It is hard to explain. 
+
+the performance aspect of layout>paint>composite--- composite level harbouring fundamental animation selector transform and opacity 
+
+Finally after hours i am quite surprised at how well it turned out. enough that my gladness overrode my notice of a lack of mouse-leave reverse animation, which I am almost certain is not possible, at least without getting really messy or ditching the beautiful life-giving idle keyframe animation and switching purely to "transition" effects (the idle animation really is the source of any of my troubles here i think. i made my stubborn bed and chose to lie in it.) - this within a context of using solely css and html of course. anyway moving on.
+
+https://css-tricks.com/different-transitions-for-hover-on-hover-off/
+
+I transferred the scant knowledge i gleaned from this debacle to improve the main navbar in the header, which now more heavily relies on simple and robust transitions, as opposed to keyframed animations - which are unncessary. aside from some fuzzy render/draw artifacts that are visible at least in my desktop browser and the inability to once again reverse an animation based on a more tricky event (reverse animate previously-current navbar button when navigating into new directory) this works very nicely. unfortunately there's still no huge jump for the amount of time put in, at least to my perception, but it's neat and i still havent had to pour javascript bleach all over the place
+
+i think I will penetrate the javascript hymen but proceed with no further strokes. I will do a dark-mode toggle, to change colours. There seem to be a variety of ways to accomplish such a feature without JS, but at least for now they blast past the functional lines i'm trying to walk in a simple github pages hosted setup, so i am going to comprise on my ethics. https://stackoverflow.com/questions/58233592/dark-mode-without-javascript
+
+after doing some further work and wanting to make things elegant, i thought it might be a good idea to use the letter boxes from the tag index/browse page across the site as a default h2. this naturally would hopefully include h2 incorporated via markdown. despite being able to initially get almost approximatey nearly there by reverting to useing just h2 + pseudo element without a parent div, thus allowing markdown to seamlessly utilize these styles, i am running into various problems with inheritance of size (which is naturally going to be variable based on content and frontmatter variables etc) due to the oddity of pseudoelements relationship with the element they are summoned out of. 
+
+what if we worked backwards. while i can fuck around more intricately with the index pages, the markdown inflated post articles are more restrictive, so i can start there and scale onward. I will do that now. easy.
+
+>justify content
+ensure max width, across a set width box so we can re-transform the pseudo-elements
+this makes sure the content spans the block, and on tagindex we know it wont ever be wider than a character, can also wrap in a div anyway here.
+-we can also vary scale via different keyframes for different levels? or something like this.
+
+https://stackoverflow.com/questions/3032856/is-it-possible-to-set-the-stacking-order-of-pseudo-elements-below-their-parent-e/9072467
+the labrynthine return upon return of stack exchange bullshits. i will get this working one day, as if i were to die.
+https://stackoverflow.com/questions/17977220/can-css3-translatez-be-used-instead-of-z-index
+https://stackoverflow.com/questions/6953497/webkit-transform-overwrites-z-index-ordering-in-chrome-13
+
+>tag letter box animates. 3 layers of squares give depth and filing cabined drawer vibes.. sliding in size and color fade to simulate 3d with border outline.
+
+>when the UL that contains list items of tags of that letter is hovered over, we get an animation that brings these boxes into "focus" a more flat, windows design staggered like letters splayed on a desk!
+_____
+
+i couldnt say why but i had manually been escaping some code to orient my images nicely - just centering them that is. i'm not sure if its just the nature of using sass and nesting selectors but I seemed to get everything working - even images with hyperlinks in/on them  - so this is excellent. vs code offers a search and replace that allowed me to retroactively expunge all of these ugly refdef escapery. 
+___________
+
+GULP
+
+after my initial interest in rake task and then reading further on vs-code. i have come across gulp. this looks incredible and exactly what i am looking for, hopefully it is. basically to automate the end game after developing the blog site or simply writing a post, to renconcile collected images cited in posts, compress them, to process sass into a css for preview (if it has changed) and run the site locally to test, eventually pushing to github too if desired. also to run what is for now a python script for tag generation - this could change i guess, maybe i could program this step into gulp, but it works so i'll stick to it. let me see. https://aaronlasseigne.com/2016/02/03/using-gulp-with-jekyll/
+https://gulpjs.com/docs/en/getting-started/quick-start
+
+some issues with using a not "digitally signed" file in appdata when trying to use vs code terminal. using a termminal outside of vs code works alright - maybe i should always do this anyway? also this was suggested as sudo replacement: https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc771525(v=ws.11)?redirectedfrom=MSDN
+
+https://sylhare.github.io/2020/07/03/Manage-jekyll-blog-gulp.html
+
+markdowncontainer? image default path for simplicity?
+
+giflossy.. https://gist.github.com/LoyEgor/e9dba0725b3ddbb8d1a68c91ca5452b5
+
+https://ankurkaushal.com/update-dependency-package-lock/
+
+Responsive Viewer
+Offered by: skmail
+
+https://www.savaslabs.com/blog/optimizing-jekyll-performance-gulp
+
+https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/#toggling-themes

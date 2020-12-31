@@ -1,0 +1,24 @@
+I simply have to break this out, shit is too long, I want to approach this properly. 
+
+i'm going to analyse 2 articles fully for dark mode. 
+	https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/ < such a great website, i am always going back to their flexbox guide
+	https://sparanoid.com/note/css-variables-guide/ this one as im interested in how to do this more efficiently, and manage the colours across the board while i'm doing this
+
+So, I want to implement a dark mode. I often use dark modes on websites and apps, even opting to sometimes use [3rd party plug-ins](https://add0n.com/chrome-reader-view.html) to similar effect, when my goal in using them is to process text with my eyes and mind. I figured that I would implement a similar feature into my blog, since in production it provides a bunch of interconnected texts for a viewer to read... and not much else. The dark-mode feature has become very popular lately in general, even becoming incorporated into desktop and mobile operating systems rather than being harboured in the web or web browser - it feels like an assimilation, while more complex and weighty, analogous to the incorporation of [flux](https://justgetflux.com/) as practically a default accessibility/display setting in most devices. It seems to coalesce with [the great replacement](https://www.smashingmagazine.com/2017/03/beyond-browser-web-desktop-apps/) of traditional code/programs with web-focused technologies.
+
+First thing to note is that, at least in my context (jekyll + github pages), the most straightforward and only way within reason of doing this is with Javascript. The Javascript virginity of the website is now lost, I have put this off for a short while now, and the consequences could be catastrophic down the line. At least now there's a dark mode. At a basic level I have simply socked in a new body class at the end of my SCSS, which re-specifies the body's and it's children's colour's. With a small JS script, which listens for a click on a specific element and then toggles the body class, hoisted into the head of the default page template, we are ready to rock now. It's quite bad really, having to resort to this. 
+
+The work doesn't end here however. As mentioned earlier there is a rising tide of dark-mode support across computer interfaces, and web browsers, for example, can now specify whether they would prefer to draw a dark theme or not. Supporting this is recommended on the great [CSS tricks](https://css-tricks.com/a-complete-guide-to-dark-mode-on-the-web/#toggling-themes) website, along with some further advisory on the caveats of using javascript to inject/support a dark theme in general. With all of this functionality in place, the final step is to consider the most efficient way of defining this so-called "dark theme" in the CSS. I could race forward and simply expand my body.dark appendage with many childrens and overwrite colouring where necessary, or I can work-smarter-not-harder and examine some [philosophizing on the matter](https://sparanoid.com/note/css-variables-guide/). I had imagined utilizing the already-present SASS part of the workflow to figure this, but [in fact](https://sass-lang.com/documentation/variables) that seems to be yet another in a long line of foolish thoughts since these are means to a more discrete prior and post processing end. 
+
+I'm calling a halt to my verbosity now. Using VS Code very nice search feature, I can filter out and check through all the "color" containing properties and see that, while there isn't much diversity, I have a lot of these defined. I transmute these various unsaturated values and mild variations of teal into the HSLa variable format indicated in the above linked set-up.
+
+As I had feared, it seems we are headed for catastrophe, since the ideal implementation in my short purview will involve some inline scripting. Heretofor I found this to be abominable an idea, but this will work well I think. https://web.dev/prefers-color-scheme/
+
+https://stackoverflow.com/questions/45357835/newer-css-not-recognized-by-vscode
+
+
+
+
+
+
+__________then intro animator and housekeepings
