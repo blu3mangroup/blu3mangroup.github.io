@@ -1,12 +1,12 @@
 ---
 layout: tagpage
-title: "Tag: Christianity"
-tag: Christianity
+title: "Tag: christianity"
+tag: christianity
 robots: noindex
 ---
 ---
 layout: tagpage
-title: "Tag: christianity"
-tag: christianity
+title: "Tag: Christianity"
+tag: Christianity
 robots: noindex
 ---
